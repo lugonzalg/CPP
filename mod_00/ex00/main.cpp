@@ -5,9 +5,8 @@ int main(int argc, char *argv[])
 {
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	while (*argv)
+	while (*++argv)
 	{
-		argv++;
 		while (**argv)
 		{
 			std::cout << (char)std::toupper(**argv);

@@ -14,7 +14,7 @@ OBJ	= $(addsuffix .o, $(FILES))
 	$(C++) $(CFLGAS) $(SNTZ) -o $@ -c $^
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLGAS) $(SNTZ) -o $(NAME) $(OBJ)
+	$(C++) $(CFLGAS) $(SNTZ) -o $(NAME) $(OBJ)
 
 all: $(NAME)
 

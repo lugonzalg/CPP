@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Account.cpp                                        :+:      :+:    :+:   */
+/*   Struct.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/01 19:23:32 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 20:24:58 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/01/25 21:10:32 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/01/29 20:08:55 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Account.hpp"
-#include <iostream>
+#ifndef STRUCT_H
+#define STRUCT_H
 
-static int Account::_nbAccounts;
+#include "PhoneBook.hpp"
 
-Account::Account( int initial_deposit )
+typedef struct	s_data
 {
-	initial_deposit = 1;
-	Account::_nbAccounts = 0;
-}
+	PhoneBook	info;
+	short int	i;
+	short int	list_num;
+	std::string	in_str;
+}	t_data;
 
-Account::~Account( void )
-{
-	std::cout << "qwerty";
-}
-
-void	Account::displayAccountsInfos( void )
-{
-	size_t	i;	
-
-	i = -1;
-	while (++i < Account::_nbAccounts)
-		std::cout << "index:" << i;
-}
+#endif

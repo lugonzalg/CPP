@@ -1,6 +1,9 @@
 # CPP
 Cursus CPP modules
 
+```
+bash
+
 mod_00
 |-- ex00
 |   |-- Makefile
@@ -18,3 +21,4 @@ mod_00
     |-- Makefile
     |-- log.log
     `-- test.cpp
+```

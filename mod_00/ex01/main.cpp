@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:32:32 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/01/25 21:21:49 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/03 20:33:29 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_option_query(t_data *d)
 			d->info.ft_book_query(d->info);
 		else
 			d->i = -1;
-		if (d->list_num == 5)
+		if (d->list_num == 8)
 			d->list_num = 0;
 		return (1);
 	}

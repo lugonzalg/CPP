@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   ZombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 21:12:28 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/03 21:27:54 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/02/05 00:15:54 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/02/05 01:40:46 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CPP
-#define PHONE_BOOK_CPP
+#include "Zombie.hpp"
 
-#include <string>
-
-class	Contact
+Zombie* zombieHorde( int N, std::string name )
 {
-	public:
-		static std::string ft_get_info( int );
-		static std::string ft_set_info( int , std::string);
-	private:
-		static std::string info[5];
-};
+	Zombie *head;
+	int		i;
 
-#endif
+	head = new Zombie[N];
+	i = -1;
+	while (++i < N)
+	{
+		head[i].ft_set_name(name);
+		head[i].announce();
+	}
+	return (head);
+}

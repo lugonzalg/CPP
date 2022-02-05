@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 21:12:28 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/03 21:27:54 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/02/04 20:26:37 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/02/04 21:18:37 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CPP
-#define PHONE_BOOK_CPP
+#include "Zombie.hpp"
 
-#include <string>
-
-class	Contact
+Zombie *randomChump (std::string str )
 {
-	public:
-		static std::string ft_get_info( int );
-		static std::string ft_set_info( int , std::string);
-	private:
-		static std::string info[5];
-};
+	Zombie	*tmp;
 
-#endif
+	tmp =  new Zombie(str);
+	tmp->announce();
+	return (tmp);
+}

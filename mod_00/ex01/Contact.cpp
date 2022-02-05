@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 21:12:28 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/03 21:27:54 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/02/03 21:01:12 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/02/03 21:26:47 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CPP
-#define PHONE_BOOK_CPP
+#include "Contact.hpp"
 
-#include <string>
-
-class	Contact
+std::string ft_get_info( int i )
 {
-	public:
-		static std::string ft_get_info( int );
-		static std::string ft_set_info( int , std::string);
-	private:
-		static std::string info[5];
-};
+	return (this->info[i]);
+}
 
-#endif
+std::string ft_set_info( int i , std::string str)
+{
+	Contact::info[i] = str;
+}
+
+Contact::Contact( void )
+{
+	size_t	i;
+
+	i = -1;
+	while (++i < 5)
+		info[i] = "default";
+}

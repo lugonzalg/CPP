@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.hpp                                        :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 21:12:28 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/03 21:27:54 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/02/04 19:23:32 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/02/04 20:59:22 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CPP
-#define PHONE_BOOK_CPP
+#ifndef	ZOMBIE_HPP
+#define	ZOMBIE_HPP
 
-#include <string>
+#include <iostream>
 
-class	Contact
+class	Zombie
 {
 	public:
-		static std::string ft_get_info( int );
-		static std::string ft_set_info( int , std::string);
+
+		Zombie ( std::string );
+		~Zombie ( void );
+
+		Zombie	*newZombie ( std::string );
+		void	announce( void );
 	private:
-		static std::string info[5];
+		std::string	_name;
 };
 
-#endif
+Zombie *newZombie ( std::string name );
+Zombie *randomChump ( std::string name );
+
+#endif //ZOMBIE_HPP 

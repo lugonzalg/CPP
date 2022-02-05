@@ -6,7 +6,8 @@ SNTZ	= -fsanitize=address
 C++	= g++
 
 FILES	= main \
-		  PhoneBook
+		  PhoneBook \
+		  Contact
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))

@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 20:32:14 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/01 19:30:18 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/04 19:05:27 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class	PhoneBook
 {
 	private:
-		Contact	Contact[5];
+		Contact	Contact[8];
 		std::string options[5];
 	public:
 		std::string	prompt_opt[3];

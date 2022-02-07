@@ -19,12 +19,12 @@
 class	HumanA
 {
 	public:
-				HumanA( std::string , Weapon );
+			HumanA( std::string , Weapon &Weapon);
 		void	attack ( void );
-		void	setWeapon( std::string );
+		void	setWeapon( std::string &);
 	private:
-		const std::string *_weapon_type;
 		std::string	_name;
+		Weapon		&_weapon;
 };
 
 #endif

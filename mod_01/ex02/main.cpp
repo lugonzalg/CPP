@@ -14,15 +14,15 @@
 
 int	main( void )
 {
-	std::string	str = "HI THIS IS BRAIN";
+	std::string	str	= "HI THIS IS BRAIN";
 	std::string &str_ref = str;
 	std::string *str_ptr;
 
-	str_ptr = &str;
+	str_ptr = &str_ref;
 	std::cout << "Address string: " << &str << std::endl;
 	std::cout << "Address though pointer: " << str_ptr << std::endl;
 	std::cout << "Address though reference: "<< &str_ref << std::endl;
 	std::cout << "Content though pointer: " << *str_ptr << std::endl;
-	std::cout << "Content though reference: "<< str_ref;
+	std::cout << "Content though reference: "<< str_ref << std::endl;
 	return (0);
 }

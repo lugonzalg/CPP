@@ -18,13 +18,13 @@
 class	Weapon
 {
 	public:
-				Weapon( std::string );
+		Weapon( std::string init_weapon );
 
-		void 	setType( std::string );
-		const	std::string *getType( void );
+		void 			setType( std::string weapon );
+		const std::string	&getType( void );
 	
 	private:
-		const std::string _type;
+		std::string _weapon_type;
 };
 
 #endif

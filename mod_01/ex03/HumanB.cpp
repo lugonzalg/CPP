@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <HumanB.hpp>
+#include "HumanB.hpp"
 
 HumanB::HumanB( std::string name )
 {
@@ -19,10 +19,10 @@ HumanB::HumanB( std::string name )
 
 void	HumanB::attack( void )
 {
-	std::cout << _name << " attacks with his " << *_weapon_type << std::endl;
+	std::cout << _name << " attacks with his " << _weapon->getType() << std::endl;
 }
 
-void	HumanB::setWeapon( Weapon w)
+void	HumanB::setWeapon( Weapon &weapon)
 {
-	_weapon_type = w.getType();
+	_weapon = &weapon;
 }

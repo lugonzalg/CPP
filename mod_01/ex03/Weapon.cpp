@@ -12,17 +12,17 @@
 
 #include "Weapon.hpp"
 
-const std::string *Weapon::getType ( void )
+const std::string &Weapon::getType ( void )
 {
-	return (&this->_type);
+	return (this->_weapon_type);
 }
 
 void	Weapon::setType ( std::string str )
 {
-	this->_type = str;
+	this->_weapon_type = str;
 }
 
-Weapon::Weapon( std::string str)
+Weapon::Weapon( std::string str )
 {
-	_type = str;	
+	this->_weapon_type = str;
 }

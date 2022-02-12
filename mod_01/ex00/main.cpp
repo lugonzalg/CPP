@@ -6,20 +6,19 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:55:05 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/05 00:12:51 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/12 01:17:25 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-
 int main( void )
 {
-	Zombie	*tmp[2];
+	Zombie	first;
+	Zombie	*tmp;
 
-	tmp[0] = newZombie("Lukas");
-	tmp[1] = randomChump("Lukassssssss");
-	delete tmp[0];
-	delete tmp[1];
+	tmp = first.newZombie("Lukas");
+	first.randomChump("Lukassssssss");
+	delete tmp;
 	return (0);
 }

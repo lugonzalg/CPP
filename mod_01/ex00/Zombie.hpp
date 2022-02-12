@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 19:23:32 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/04 20:59:22 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/12 01:15:35 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@
 class	Zombie
 {
 	public:
-
-		Zombie ( std::string );
+		Zombie ( void );
 		~Zombie ( void );
 
-		Zombie	*newZombie ( std::string );
-		void	announce( void );
+		void randomChump ( std::string name );
+		Zombie *newZombie ( std::string name );
 	private:
+		void		_announce( void );
 		std::string	_name;
 };
-
-Zombie *newZombie ( std::string name );
-Zombie *randomChump ( std::string name );
 
 #endif //ZOMBIE_HPP 

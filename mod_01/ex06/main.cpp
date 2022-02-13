@@ -6,24 +6,24 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 20:36:49 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/13 00:45:49 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/13 01:20:18 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Karen.hpp"
 #include <iostream>
 
-int main( void )
+int main( int argc, char *argv[] )
 {
 	Karen	status;
-
 	std::string in_str;
 
-	while (1)
+	if (argc == 1)
 	{
-		std::cout << "Please select prompt level: ";
-		std::cin >> in_str;	
-		status.ft_complain( in_str );
+		std::cout << "Error: Wrong arguments";
+		return (1);
 	}
+	in_str = argv[1];
+	status.ft_complain_cases( in_str );
 	return (0);
 }

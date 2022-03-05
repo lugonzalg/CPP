@@ -6,23 +6,29 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 03:32:45 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/18 23:40:42 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/05 16:55:44 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Fixed.hpp"
 
-int main( void )
+std::ostream&	operator << ( std::ostream& ostream, const Fixed &obj )
 {
+	std::cout << obj.toFloat();
+	return (ostream);
+}
+
+int main( void ) {
 	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 	return 0;
 }

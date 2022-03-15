@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:34:44 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/05 19:14:22 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/05 21:06:43 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class	Fixed
 		static const Fixed&	max(const Fixed& obj1, const Fixed& obj2);
 
 		//Assign operation
-		void	operator = ( const Fixed &obj );
+		Fixed&	operator = ( const Fixed &obj );
 		//Comparison operations
 		bool	operator > (const Fixed& obj) const;
 		bool	operator >= (const Fixed& obj) const;

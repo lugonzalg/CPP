@@ -1,4 +1,4 @@
-NAME 	= ScavTrap
+NAME 	= FragTrap
 
 RM 		= rm -rf
 CFLGAS	= -g3 -Wall -Werror -Wextra
@@ -8,7 +8,8 @@ INC 	= -I .
 
 FILES	= main \
 		  ClapTrap \
-		  ScavTrap
+		  ScavTrap \
+		  FragTrap
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))
@@ -34,7 +35,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) ClapTrap.dSYM
+	$(RM) FragTrap.dSYM
 
 re: fclean all
 

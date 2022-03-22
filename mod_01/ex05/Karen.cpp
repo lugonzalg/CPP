@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:07:23 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/13 00:45:52 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:40:02 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,27 @@
 
 void Karen::_debug ( void )
 {
-	std::cout << "DEBUG CUSTOM MSG";
+	std::cout << "DEBUG CUSTOM MSG" << std::endl;
 }
 
 void Karen::_info ( void )
 {
-	std::cout << "INFO CUSTOM MSG";
+	std::cout << "INFO CUSTOM MSG" << std::endl;
 }
 
 void Karen::_warning ( void )
 {
-	std::cout << "WARNING CUSTOM MSG";
+	std::cout << "WARNING CUSTOM MSG" << std::endl;
 }
 
 void Karen::_error ( void )
 {
-	std::cout << "ERROR CUSTOM MSG";
+	std::cout << "ERROR CUSTOM MSG" << std::endl;
+}
+
+void Karen::_missed ( void )
+{
+	std::cout << "Error: Wrong number of arguments." << std::endl;
 }
 
 Karen::Karen ( void )
@@ -42,6 +47,8 @@ Karen::Karen ( void )
 	_status[2].ft_level = &Karen::_warning;
 	_status[3].level = "ERROR";
 	_status[3].ft_level = &Karen::_error;
+	_status[4].level = "MISSED";
+	_status[4].ft_level = &Karen::_missed;
 }
 
 void	Karen::ft_complain ( std::string level )
@@ -50,10 +57,7 @@ void	Karen::ft_complain ( std::string level )
 	Karen	*Karen = this;
 
 	i = 0;
-	while (i < 4 && level != _status[i].level)
+	while (i < 4 && level.compare(_status[i].level) != 0)
 		i++;
-	if (i != 4)
-		(Karen->*_status[i].ft_level)();
-	else
-		std::cout << "Wrong argument";
+	(Karen->*_status[i].ft_level)();
 }

@@ -33,7 +33,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) Zombie.dSYM
+	$(RM) karenFilter.dSYM
 
 re: fclean all
 

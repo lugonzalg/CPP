@@ -5,25 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 20:36:49 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/19 15:40:03 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/03/16 20:24:33 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/03/22 20:53:08 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
-#include <iostream>
+#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
-int main( void )
+int main ( void )
 {
-	Karen	status;
+	//ClapTrap	hero_A;
+	//ClapTrap	hero_B("Jimmy");
+	//ScavTrap	hero_AB;
+	//FragTrap	hero_AC;
+	DiamondTrap	hero_AD("Jeremy");
 
-	std::string in_str;
-
-	while (1)
-	{
-		std::cout << "Please select prompt level: ";
-		std::cin >> in_str;	
-		status.ft_complain( in_str );
-	}
+	//hero_AB.guardGate();
+	//hero_A.attack(hero_B.get_name());
+	//hero_B.takeDamage(hero_A.get_attack_damage());
+	//hero_AC.highFivesGuys();
+	hero_AD.highFivesGuys();
+	hero_AD.whoAmI();
+	//hero_AD.attack(hero_AC.get_name());
 	return (0);
 }

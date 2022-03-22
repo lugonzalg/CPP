@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:26:05 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/16 21:48:50 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:13:23 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ ScavTrap& ScavTrap::operator = ( const ScavTrap& obj )
 	this->set_hitpoints(obj.get_hitpoints());
 	this->set_energy_points(obj.get_energy_points());
 	this->set_attack_damage(obj.get_attack_damage());
-	this->set_surname(obj.get_surname());
 	return (*this);
 }
 
 void	ScavTrap::guardGate ( void ) { std::cout << "ScavTrap have enterred in Gate keeper mode" << std::endl; }
-
-std::string	ScavTrap::get_surname ( void ) const { return (this->_surname); };
-void	ScavTrap::set_surname ( std::string surname ) { this->_surname = surname; }

@@ -6,9 +6,12 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:34:44 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/05 19:14:22 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:47:02 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	FIXED_HPP
+#define	FIXED_HPP
 
 #include <iostream>
 
@@ -50,3 +53,5 @@ class	Fixed
 };
 
 std::ostream	&operator << (std::ostream &ostream, const Fixed &obj );
+
+#endif

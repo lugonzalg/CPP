@@ -6,9 +6,12 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 01:34:44 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/19 17:19:08 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:45:27 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	FIXED_HPP
+#define	FIXED_HPP
 
 class	Fixed
 {
@@ -24,3 +27,5 @@ class	Fixed
 		int					_fixed_point_value;
 		static const int	_fraction_bits;
 };
+
+#endif

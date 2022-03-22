@@ -6,9 +6,12 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 19:10:38 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/15 20:38:27 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/16 20:47:38 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef	POINT_HPP
+#define	POINT_HPP
 
 #include "Fixed.hpp"
 
@@ -29,3 +32,5 @@ class Point
 		const Fixed	_x;
 		const Fixed	_y;
 };
+
+#endif

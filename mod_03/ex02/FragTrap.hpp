@@ -6,12 +6,14 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:49:36 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/16 21:56:56 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:14:56 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	FRAGTRAP_HPP
 #define	FRAGTRAP_HPP
+
+#include <ClapTrap.hpp>
 
 class FragTrap : public ClapTrap
 {
@@ -19,8 +21,10 @@ class FragTrap : public ClapTrap
 		FragTrap ( void );
 		FragTrap ( std::string );
 		FragTrap ( const FragTrap& );
+		~FragTrap ( void );
 
 		void	highFivesGuys(void);
+		FragTrap& 	operator = (const FragTrap& );
 	private:
 };
 

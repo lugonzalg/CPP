@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:26:13 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/16 21:48:52 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/22 19:13:01 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ class ScavTrap : public ClapTrap
 
 		void		guardGate();
 		ScavTrap& 	operator = (const ScavTrap& );
-		std::string	get_surname ( void ) const;
-		void		set_surname ( std::string );
 	private:
 		std::string	_surname;
 };

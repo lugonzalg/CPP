@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 20:36:49 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/02/19 15:40:03 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/03/16 21:49:36 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/03/22 20:43:59 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Karen.hpp"
-#include <iostream>
+#ifndef	FRAGTRAP_HPP
+#define	FRAGTRAP_HPP
 
-int main( void )
+#include <ClapTrap.hpp>
+
+class FragTrap : virtual public ClapTrap
 {
-	Karen	status;
+	public:
+		FragTrap ( void );
+		FragTrap ( const std::string );
+		FragTrap ( const FragTrap& );
+		~FragTrap ( void );
 
-	std::string in_str;
+		void	highFivesGuys(void);
+		FragTrap& 	operator = (const FragTrap& );
+	private:
+};
 
-	while (1)
-	{
-		std::cout << "Please select prompt level: ";
-		std::cin >> in_str;	
-		status.ft_complain( in_str );
-	}
-	return (0);
-}
+#endif

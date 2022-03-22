@@ -1,13 +1,16 @@
-NAME 	= Karen
+NAME 	= DiamondTrap
 
 RM 		= rm -rf
-CFLGAS	= -g3 -Wall -Werror -Wextra
+CFLGAS	= -g3 -Wall -Werror -Wextra -Wshadow -Wno-shadow
 SNTZ	= -fsanitize=address
 C++		= clang++
 INC 	= -I .
 
 FILES	= main \
-		  Karen
+		  ClapTrap \
+		  ScavTrap \
+		  FragTrap \
+		  DiamondTrap
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))
@@ -33,7 +36,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) Zombie.dSYM
+	$(RM) DiamondTrap.dSYM
 
 re: fclean all
 

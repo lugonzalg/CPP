@@ -6,7 +6,7 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 21:49:30 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/22 21:18:31 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/22 20:43:46 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ FragTrap::FragTrap ( void ) : ClapTrap()
 	std::cout << "FragTrap Void contructor called" << std::endl;
 }
 
-FragTrap::FragTrap ( std::string name ) : ClapTrap(name)
+FragTrap::FragTrap ( const std::string name ) : ClapTrap(name)
 {
 	this->set_hitpoints(100);
 	this->set_energy_points(100);
 	this->set_attack_damage(30);
-	std::cout << "FragTrap Void contructor called" << std::endl;
+	std::cout << "FragTrap String contructor called" << std::endl;
 }
 
 FragTrap::FragTrap ( const FragTrap& obj )
@@ -36,7 +36,7 @@ FragTrap::FragTrap ( const FragTrap& obj )
 	std::cout << "FragTrap Copy contructor called" << std::endl;
 }
 
-FragTrap::~FragTrap ( void ) { std::cout << "FragTrap Destructor called" << std::endl; }
+FragTrap::~FragTrap ( void ) { std::cout << "FragTrap Constructor called" << std::endl; }
 
 FragTrap& FragTrap::operator = ( const FragTrap& obj )
 {

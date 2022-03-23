@@ -6,31 +6,40 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:28:10 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/22 21:40:54 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:40:16 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <Cat.hpp>
+
 Cat::Cat ( void )
 {
-	std::cout << "Cat base class Void constructor called";
+	std::cout << "Cat inhereted class Void constructor called";
 }
 
-Cat::Cat ( const std::string name )
+Cat::Cat ( const std::string type ) : Animal(type)
 {
-	
-	std::cout << "Cat base class String constructor called";
+	std::cout << "Cat inhereted class String constructor called";
 }
 
 Cat::Cat ( const Cat& obj )
 {
 	*this = obj;
-	std::cout << "Cat base class destructor called";
+	std::cout << "Cat inhereted class constructor called";
+}
+
+Cat::~Cat ( void )
+{
+	std::cout << "Cat inhereted class destructor called";
 }
 
 Cat&	Cat::operator = ( const Cat& obj )
 {
-	this->set_type(obj.get_type);
+	this->setType(obj.getType());
+	return (*this);
 }
 
-void	Cat::set_type ( std::string type ) { this->_type = type; }
-std::string	Cat::get_type ( void ) const { return (this->_type ); }
+void	Cat::makeSound(void) const
+{
+	std::cout << "Miau" << std::endl;
+}

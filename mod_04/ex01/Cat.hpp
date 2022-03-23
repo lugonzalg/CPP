@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 21:23:38 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/22 22:43:21 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/03/22 21:28:15 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/03/23 22:59:28 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
-class Animal
+#include <Animal.hpp>
+#include <Brain.hpp>
+
+class Cat : public Animal
 {
 	public:
-		Animal ( void );
-		Animal ( const std::string );
-		Animal ( const Animal& );
-		~Animal ( void );
+		Cat 		( void );
+		Cat 		( const std::string );
+		Cat 		( const Cat& );
+		~Cat 		( void );
 
-		void		set_type ( const std::string );
-		std::string	get_type ( void ) const;
+		Cat&	operator = ( const Cat& obj );
+		virtual	void	makeSound(void) const;
+		void		setBrain(uint8_t, const std::string);
+		std::string	getBrain(uint8_t) const;
+		Brain	*getBrain_ref(void) const;
 	private:
+		Brain		*_brain;
 
 	protected:
-		std::string _type;
 };
 
 #endif

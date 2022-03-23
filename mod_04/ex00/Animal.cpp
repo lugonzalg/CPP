@@ -6,33 +6,43 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:23:27 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/22 22:43:22 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:44:07 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include <Animal.hpp>
 
 Animal::Animal ( void )
 {
-	std::cout << "Animal base class Void constructor called";
+	std::cout << "Animal inhereted class Void constructor called";
 }
 
-Animal::Animal ( const std::string name )
+Animal::Animal (const std::string type) : _type(type)
 {
-	
-	std::cout << "Animal base class String constructor called";
+	std::cout << "Animal inhereted class String constructor called";
 }
 
 Animal::Animal ( const Animal& obj )
 {
 	*this = obj;
-	std::cout << "Animal base class destructor called";
+	std::cout << "Animal inhereted class constructor called";
 }
 
 Animal&	Animal::operator = ( const Animal& obj )
 {
-	this->set_type(obj.get_type);
+	this->setType(obj.getType());
+	return (*this);
 }
 
-void	Animal::set_type ( std::string type ) { this->_type = type; }
-std::string	Animal::get_type ( void ) const { return (this->_type ); }
+Animal::~Animal ( void )
+{
+	std::cout << "Animal inhereted class destructor called";
+}
+
+void	Animal::setType ( std::string type ) { this->_type = type; }
+std::string	Animal::getType ( void ) const { return (this->_type ); }
+
+void	Animal::makeSound(void) const
+{
+	std::cout << "iihqwwerqw" << std::endl;
+}

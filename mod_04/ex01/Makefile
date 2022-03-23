@@ -6,8 +6,11 @@ SNTZ	= -fsanitize=address
 C++		= clang++
 INC 	= -I .
 
-FILES	= main \
-		  Animal
+FILES	= main	\
+		  Animal \
+		  Cat \
+		  Dog \
+		  Brain
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))

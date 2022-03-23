@@ -6,31 +6,41 @@
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 21:28:23 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/22 22:43:23 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/03/23 20:40:18 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <Dog.hpp>
+
 Dog::Dog ( void )
 {
-	std::cout << "Dog base class Void constructor called";
+	std::cout << "Dog inhereted class Void constructor called";
 }
 
-Dog::Dog ( const std::string name )
+Dog::Dog ( const std::string type ) : Animal(type)
 {
 	
-	std::cout << "Dog base class String constructor called";
+	std::cout << "Dog inhereted class String constructor called";
 }
 
 Dog::Dog ( const Dog& obj )
 {
 	*this = obj;
-	std::cout << "Dog base class destructor called";
+	std::cout << "Dog inhereted class Copy constructor called";
 }
 
-Cat&	Cat::operator = ( const Cat& obj )
+Dog::~Dog ( void )
 {
-	this->set_type(obj.get_type);
+	std::cout << "Dog inhereted class Void destructor called";
 }
 
-void	Cat::set_type ( std::string type ) { this->_type = type; }
-std::string	Cat::get_type ( void ) const { return (this->_type ); }
+Dog&	Dog::operator = ( const Dog& obj )
+{
+	this->setType(obj.getType());
+	return (*this);
+}
+
+void	Dog::makeSound(void) const
+{
+	std::cout << "Guau" << std::endl;
+}

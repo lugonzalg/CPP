@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/22 21:23:32 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/03/23 20:40:22 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/03/23 20:41:35 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/03/23 22:59:31 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Animal.hpp>
-#include <Dog.hpp>
-#include <Cat.hpp>
+#ifndef	BRAIN_HPP
+#define	BRAIN_HPP
 
-int main()
+#include <iostream>
+
+class	Brain
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	private:
+		std::string _ideas[100];
+	protected:
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-}
+	public:
+		Brain		(void);
+		Brain		(std::string);
+		Brain		(const Brain&);
+		~Brain		(void);
+		Brain&	operator = (const Brain&);
+		std::string	getIdeas(uint8_t) const;
+		void		setIdeas(uint8_t, std::string);
+
+};
+
+#endif

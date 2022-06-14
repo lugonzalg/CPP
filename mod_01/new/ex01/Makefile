@@ -1,30 +1,30 @@
 NAME 	= Zombie
 
 RM 		= rm -rf
-CFLGAS	= -g3 -Wall -Werror -Wextra
+CFLAGS	= -g3 -Wall -Werror -Wextra
 SNTZ	= -fsanitize=address
-C++		= clang++
+C++		= clang++ -std=c++98
 INC 	= -I .
+
 FILES	= Zombie \
-		  newZombie \
 		  main \
-		  randomChump \
+		  ZombieHorde 
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))
 
 .cpp.o:
 ifneq (,$(findstring sn, $(MAKEFLAGS)))
-	$(C++) $(CFLGAS) $(INC) $(SNTZ) -o $@ -c $^
+	$(C++) $(CFLAGS) $(INC) $(SNTZ) -o $@ -c $^
 else
-	+$(C++) $(CFLGAS) $(INC) -o $@ -c $^
+	+$(C++) $(CFLAGS) $(INC) -o $@ -c $^
 endif
 
 $(NAME): $(OBJ)
 ifneq (,$(findstring sn, $(MAKEFLAGS)))
-	$(C++) $(CFLGAS) $(SNTZ) -o $(NAME) $(OBJ)
+	$(C++) $(CFLAGS) $(SNTZ) -o $(NAME) $(OBJ)
 else
-	+$(C++) $(CFLGAS) -o $(NAME) $(OBJ)
+	+$(C++) $(CFLAGS) -o $(NAME) $(OBJ)
 endif
 
 all: $(NAME)
@@ -38,4 +38,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean sn fclean re sn
+.PHONY: all clean sn fclean re 

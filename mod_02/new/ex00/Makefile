@@ -1,4 +1,4 @@
-NAME 	= Zombie
+NAME 	= Fixed
 
 RM 		= rm -rf
 CFLAGS	= -g3 -Wall -Werror -Wextra
@@ -6,9 +6,8 @@ SNTZ	= -fsanitize=address
 C++		= clang++ -std=c++98
 INC 	= -I .
 
-FILES	= Zombie \
-		  main \
-		  ZombieHorde 
+FILES	= main \
+		  Fixed
 
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))

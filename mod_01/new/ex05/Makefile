@@ -1,4 +1,4 @@
-NAME    = Human
+NAME    = Karen
 
 RM      = rm -rf
 CFLAGS  = clang++ -std=c++98 -Wall -Werror -Wextra
@@ -6,9 +6,7 @@ SNTIZE  = -fsanitize=address -g3
 INC     = -I .
 
 FILES   =   main \
-            HumanA \
-            HumanB \
-            Weapon
+            Karen
 
 SRC     = $(addsuffix .cpp, $(FILES))
 OBJ     = $(addsuffix .o, $(FILES))

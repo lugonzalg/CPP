@@ -3,10 +3,13 @@
 
 int main()
 {
-    Fixed fixed, fixed2;
+    Fixed   a;
+    Fixed   b(a);
+    Fixed   c;
 
-    fixed.setRawBits(123);
-    fixed2 = fixed;
-    std::cout << fixed.getRawBits() << std::endl << fixed2.getRawBits();
-    return 0;
+    c = b;
+
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
 }

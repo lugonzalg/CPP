@@ -29,6 +29,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		void			whoAmI( void );
 		std::string		get_Dname ( void ) const;
 		void			set_Dname ( std::string );
+		void			stats();
 	private:
 		std::string _Dname;
 

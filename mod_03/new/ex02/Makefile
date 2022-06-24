@@ -1,4 +1,4 @@
-NAME	= ScavTrap
+NAME	= FragTrap
 
 RM		= rm -rf
 CFLAGS	= -Wall -Werror -Wextra -g3
@@ -7,7 +7,7 @@ C++		= clang++ -std=c++98
 INC		= -I .
 
 FILES	=   ClapTrap \
-			ScavTrap \
+			FragTrap \
             main
 
 SRC		= $(addsuffix .cpp, $(FILES))

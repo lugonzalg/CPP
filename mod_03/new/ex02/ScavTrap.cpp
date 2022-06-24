@@ -1,10 +1,18 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap() { std::cout << "Inheretence default constructor" << std::endl;}
+ScavTrap::ScavTrap() {
+	std::cout << "Inheretence default constructor" << std::endl;
+	this->setHitPoints(100);
+	this->setEnergy(50);
+	this->setDamage(20);
+}
 
 ScavTrap::ScavTrap(std::string const& name) : ClapTrap(name) {
 	std::cout << "Inheretence string constructor" << std::endl;
+	this->setHitPoints(100);
+	this->setEnergy(50);
+	this->setDamage(20);
 }
 
 ScavTrap::ScavTrap(ScavTrap const& src) {
@@ -15,7 +23,10 @@ ScavTrap::ScavTrap(ScavTrap const& src) {
 ScavTrap::~ScavTrap() { std::cout << "Inheretence default destructor" << std::endl;}
 
 ScavTrap&	ScavTrap::operator= (ScavTrap const& src) {
-	(void)src;
+	this->setName(src.getName());
+	this->setHitPoints(src.getHitPoints());
+	this->setEnergy(src.getEnergy());
+	this->setDamage(src.getDamage());
 	return (*this);
 }
 

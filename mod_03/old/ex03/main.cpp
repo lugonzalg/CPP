@@ -23,6 +23,7 @@ int main ( void )
 	//FragTrap	hero_AC;
 	DiamondTrap	hero_AD("Jeremy");
 
+	hero_AD.stats();
 	//hero_AB.guardGate();
 	//hero_A.attack(hero_B.get_name());
 	//hero_B.takeDamage(hero_A.get_attack_damage());

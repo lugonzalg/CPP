@@ -57,3 +57,10 @@ void	DiamondTrap::whoAmI ( void )
 	std::cout << ClapTrap::get_name() << std::endl;
 	std::cout << this->get_Dname() << std::endl;
 }
+
+void	DiamondTrap::stats() {
+	std::cout << "NAME: " << this->get_name() << std::endl;
+	std::cout << "HITPOINTS: " << this->get_hitpoints() << std::endl;
+	std::cout << "ENERGY: " << this->get_energy_points() << std::endl;
+	std::cout << "DAMAGE: " << this->get_attack_damage() << std::endl;
+}

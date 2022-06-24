@@ -17,10 +17,15 @@ class ClapTrap
 		void	takeDamage(unsigned int );
 		void	beRepaired(unsigned int );
 		/*GETTERS*/
-		std::string&	getName();
-		unsigned int	getHitPoints();
-		unsigned int	getEnergy();
-		unsigned int	getDamage();
+		std::string const&	getName() const;
+		unsigned int	getHitPoints() const;
+		unsigned int	getEnergy() const;
+		unsigned int	getDamage() const;
+		/*SETTERS*/
+		void	setName(std::string const&);
+		void	setHitPoints(unsigned int);
+		void	setEnergy(unsigned int);
+		void	setDamage(unsigned int);
 
 		ClapTrap&	operator= (ClapTrap const&);
 

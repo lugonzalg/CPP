@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [[ "$1" = "run" ]]; then
     #docker run -it --rm --volume /etc/passwd:/etc/passwd:ro --volume /etc/group:/etc/group:ro --user 1000:1000 -v ${PWD}:/tmp/ cpp /bin/bash
     docker run -it --rm --name cpp_env -v ${PWD}:/tmp/ cpp /bin/bash

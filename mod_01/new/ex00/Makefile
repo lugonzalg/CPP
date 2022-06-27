@@ -13,8 +13,8 @@ FILES	= Zombie \
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))
 
-.cpp.o:
 ifneq (,$(findstring sn, $(MAKEFLAGS)))
+.cpp.o:
 	$(C++) $(CFLAGS) $(INC) $(SNTZ) -o $@ -c $^
 else
 	+$(C++) $(CFLAGS) $(INC) -o $@ -c $^
@@ -34,7 +34,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) Zombie.dSYM
+	$(RM) $(NAME).dSYM
 
 re: fclean all
 

@@ -4,6 +4,7 @@ RUN apt-get update && apt install -y \
     man \
     clang \
     make \
-    valgrind
+    valgrind \
+    gdb 
 
 #USER 1000:1000

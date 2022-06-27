@@ -5,7 +5,8 @@ CFLAGS  = clang++ -std=c++98 -Wall -Werror -Wextra
 SNTIZE  = -fsanitize=address -g3
 INC     = -I .
 
-FILES   =   main 
+FILES   =   main \
+            Replace
 
 SRC     = $(addsuffix .cpp, $(FILES))
 OBJ     = $(addsuffix .o, $(FILES))
@@ -23,7 +24,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) Zombie.dSYM
+	$(RM) $(NAME).dSYM
 
 re: fclean all
 

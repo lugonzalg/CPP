@@ -34,7 +34,7 @@ clean:
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) Zombie.dSYM
+	$(RM) $(NAME).dSYM
 
 re: fclean all
 

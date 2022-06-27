@@ -5,8 +5,15 @@ class HumanA
 {
     private:
         std::string _name;
+        Weapon& _weapon;
+
     public:
-        void attack();
+        //HumanA();
+        HumanA(std::string, Weapon&);
+        ~HumanA();
+
+        void    attack();
+        void    setWeapon(Weapon&);
 };
 
 #endif

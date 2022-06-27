@@ -7,4 +7,10 @@ elif [[ "$1" = "build" ]]; then
     docker build . -t cpp:latest
 elif [[ "$1" = "id" ]]; then
     id -a
+else
+    echo "Error: Wrong parameter"
+    echo "  run"
+    echo "  build"
+    echo "  id"
+    echo "Your parameter is => "$1
 fi

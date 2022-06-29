@@ -30,8 +30,8 @@ class AMateria
 		std::string const& 	getType() const; //Returns the materia type
 		void				setType(std::string const&);
 		virtual AMateria* 	clone() const = 0;
-		//virtual void		use(ICharacter& );
-		//AMateria&			operator=(const AMateria&);
+		virtual void		use(ICharacter& );
+		AMateria&			operator=(const AMateria&);
 };
 
 #endif

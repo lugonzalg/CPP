@@ -10,7 +10,7 @@ int main() {
     delete doggy;//should not create a leak
     delete kitty;*/
 
-    Animal  fail;
+    //Animal  fail;
     Animal   *jungle[42];
     Cat     ref1, ref2;
     int i = 0;

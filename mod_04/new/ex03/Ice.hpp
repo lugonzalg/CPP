@@ -1,18 +1,19 @@
+#pragma once
 #ifndef ICE_HPP
 #define ICE_HPP
 
-#include <string>
+#include "ICharacter.hpp"
+//#include "AMateria.hpp"
 
-class Ice
+class Ice : public AMateria
 {
-	protected:
-		std::string	_type;
-
 	public:
 		Ice();
 		Ice(std::string const&);
 		Ice(Ice const&);
 		~Ice();
+
+		Ice&	operator= (Ice const&);
 
 		std::string const& getType() const; //Returns the materia type
 		Ice* clone() const;

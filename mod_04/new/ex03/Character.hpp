@@ -1,28 +1,35 @@
+#pragma once
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-class Character
+#include "ICharacter.hpp"
+
+class Character : public ICharacter
 {
 	private:
-		static std::size_t	_size = 4;
+		static const std::size_t	_size = 4;
 
 		AMateria*	_inventory[4];
 		std::size_t	_emptyPos;
+		std::string	_name;
 
 	public:
 		Character();
+		Character(std::string const&);
 		Character(Character const&);
-		~Character() {}
+		~Character();
 
-		virtual std::string const & getName() const;
-		virtual void equip(AMateria*);
-		virtual void unequip(int idx);
-		virtual void use(int idx, ICharacter& target);
+		void	init();
+		std::string const & getName() const;
+		void equip(AMateria*);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 
 		Character&	operator= (Character const&);
 
 		/*GETTERS*/
-		std::size_t	getEmptyPos();
+		std::size_t		getEmptyPos() const;
+		bool	getMateria(int, std::string const&) const;
 };
 
 #endif

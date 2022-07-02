@@ -18,6 +18,8 @@ class Fixed
 
         Fixed& operator=    (const Fixed&);
         Fixed operator+     (const Fixed&);
+        Fixed operator--    ();
+        Fixed operator--    (int);
         Fixed operator++    ();
         Fixed operator++    (int);
         Fixed operator-     (const Fixed&);

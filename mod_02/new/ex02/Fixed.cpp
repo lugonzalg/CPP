@@ -33,6 +33,23 @@ Fixed Fixed::operator+ (const Fixed& toCopy) {
 }
 
 //PREFIX SUM
+Fixed Fixed::operator-- () {
+    --this->_fPoint;
+
+    //std::cout << "Double PreffixSum operator" << std::endl;
+    return (*this);
+}
+
+Fixed Fixed::operator-- (int) {
+    Fixed res(*this);
+
+    --(*this);
+
+    //std::cout << "Double PreffixSum operator" << std::endl;
+    return (res);
+}
+
+//PREFIX SUM
 Fixed Fixed::operator++ () {
     ++this->_fPoint;
 

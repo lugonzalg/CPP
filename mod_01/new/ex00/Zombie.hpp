@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lugonzal <lugonzal@student.42urduli>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/01 18:47:12 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/07/01 18:56:20 by lugonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ZOMBIE_HPP
 #define ZOMBIE_HPP
 
@@ -12,6 +24,8 @@ class Zombie
    public:
         Zombie(std::string);
         ~Zombie(void);
+
+        void   announce();
 
 };
 

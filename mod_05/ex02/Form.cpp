@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:50 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 17:39:17 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/03 20:25:27 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,44 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return ("Form level too low for be signed");// + type);
 }
 
+const char* Form::FormFalseStatus::what() const throw() {
+	return ("Form isn't signed, not available");// + type);
+}
+
 /*MEMBER FUNCTIONS*/
 
-void	Form::beSigned(Bureaucrat& signer) {
+void	Form::beSigned(Bureaucrat const& signer) {
 	try
 	{
 		if (signer.getLevel() > this->getGradeSign())
 			throw Form::GradeTooLowException();
-		//this->_state = true;
+		this->_state = true;
 	}
-	catch (Form::GradeTooLowException& e) {
+	catch (Form::GradeTooLowException const& e) {
 		std::cout << e;
 	}
 }
+
+void	Form::execute(Bureaucrat const& bure) {
+	try
+	{
+		if (!this->_state)
+			Form::FormFalseStatus();
+		else if (this->getGradeExec() < bure.getLevel())
+			Form::GradeTooLowException();
+		this->action(*this);
+	}
+	catch (Form::GradeTooLowException& e)
+	{
+		std::cout << e;
+	}
+	catch (Form::FormFalseStatus& e)
+	{
+		std::cout << e;
+	}
+}
+
+void	Form::action(Form const& form) { std::cout << "Form: " + form.getName() + " doesn't have any utility" << std::endl; } 
 
 /*SETTERS**/
 
@@ -81,12 +106,17 @@ int					Form::getGradeExec() const { return this->_gradeExec; }
 
 /*OSTREAM*/
 
-std::ostream&	operator<< (std::ostream& os, Form::GradeTooHighException& e) {
+std::ostream&	operator<< (std::ostream& os, Form::GradeTooHighException const& e) {
 	os << e.what() << std::endl;
 	return os;
 }
 
-std::ostream&	operator<< (std::ostream& os, Form::GradeTooLowException& e) {
+std::ostream&	operator<< (std::ostream& os, Form::GradeTooLowException const& e) {
+	os << e.what() << std::endl;
+	return os;
+}
+
+std::ostream&	operator<< (std::ostream& os, Form::FormFalseStatus const& e) {
 	os << e.what() << std::endl;
 	return os;
 }

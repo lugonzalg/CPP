@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Intern.hpp                                         :+:      :+:    :+:   */
+/*   Form.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,36 +12,44 @@
 
 #include <string>
 
-class Intern
+class Bureaucrat;
+
+class Form
 {
 	private:
 
 		std::string const 	_name;
-		std::bool			_state;
+		std::string const	_error;
+		bool				_state;
 		int const			_gradeSign;
 		int const			_gradeExec;
 
 	public:
 
-		Intern();
-		Intern(std::string, int, int);
-		~Intern();
+		Form();
+		Form(std::string, int, int);
+		~Form();
 
 	class GradeTooHighException : public std::exception
 	{
 		public:
 			virtual const char*	what() const throw();
+		private:
+			std::string	_error;
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 		public:
 			virtual const char*	what() const throw();
+		private:
+			std::string	_error;
 	};
 
 	std::string const&	getName() const;
-	std::bool 			getState() const;
-	int	const			getGradeSign() const;
-	int const			getGradeExec() const;
+	bool 				getState() const;
+	int					getGradeSign() const;
+	int 				getGradeExec() const;
 
+	void				beSigned(Bureaucrat&);
 };

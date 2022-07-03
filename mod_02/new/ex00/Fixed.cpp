@@ -12,6 +12,7 @@ Fixed::Fixed(const Fixed& toCopy) {
 }
 
 Fixed::Fixed(const int num) {
+    this->_fPoint = num;
     std::cout << "Int constructor" << std::endl;
 }
 
@@ -38,7 +39,7 @@ float   Fixed::toFloat() {
     return (this->_fPoint / (1<<this->_scale));
 }
 
-int Fixed::toOnt() {
+int Fixed::toInt() {
     std::cout << "ToInt" << std::endl;
     return (this->_fPoint * (1<<this->_scale));
 }

@@ -10,9 +10,13 @@ class Fixed
     public:
         Fixed();
         Fixed(const Fixed&);
+        Fixed(const int);
         ~Fixed();
 
         Fixed& operator= (const Fixed&);
+
+        int     toInt();
+        float   toFloat();
         int     getRawBits() const;
         void    setRawBits(int const);
 };

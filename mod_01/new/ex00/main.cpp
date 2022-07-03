@@ -7,7 +7,7 @@ int main(int ac, char *av[])
     Zombie *refZombie;
 
     refZombie = newZombie("paco");
-    refZombie.announce();
+    refZombie->announce();
     randomChump("Jimmy");
     delete refZombie;
     return 0;

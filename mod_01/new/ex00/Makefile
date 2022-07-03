@@ -13,19 +13,11 @@ FILES	= Zombie \
 SRC	= $(addsuffix .cpp, $(FILES))
 OBJ	= $(addsuffix .o, $(FILES))
 
-ifneq (,$(findstring sn, $(MAKEFLAGS)))
 .cpp.o:
 	$(C++) $(CFLAGS) $(INC) $(SNTZ) -o $@ -c $^
-else
-	+$(C++) $(CFLAGS) $(INC) -o $@ -c $^
-endif
 
 $(NAME): $(OBJ)
-ifneq (,$(findstring sn, $(MAKEFLAGS)))
 	$(C++) $(CFLAGS) $(SNTZ) -o $(NAME) $(OBJ)
-else
-	+$(C++) $(CFLAGS) -o $(NAME) $(OBJ)
-endif
 
 all: $(NAME)
 

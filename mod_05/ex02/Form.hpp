@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:45 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 20:25:26 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:43:17 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ class Form
 	private:
 
 		std::string const 	_name;
-		std::string 		_target;
 		bool				_state;
 		int const			_gradeSign;
 		int const			_gradeExec;
+
+	protected:
+
+		std::string 		_target;
 
 	public:
 
@@ -35,7 +38,7 @@ class Form
 
 		void			sign();
 		void			execute(Bureaucrat const&);
-		virtual	void	action(Form const&);
+		virtual	void	action() const;
 		void			beSigned(Bureaucrat const&);
 
 		std::string const&	getName() const;

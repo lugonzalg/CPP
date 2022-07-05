@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 19:25:40 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 20:25:24 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:26:47 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm();
 		~PresidentialPardonForm(std::string const&);
 
-		void	execute(Bureaucrat const&);
+		virtual void action() const;
 };

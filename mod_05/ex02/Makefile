@@ -1,4 +1,4 @@
-NAME	= Form
+NAME	= FormExtra
 
 RM		= rm -rf
 C++		= clang++
@@ -8,7 +8,9 @@ INC		= -I .
 
 FILES	= main \
 		  Form \
-		  Bureaucrat
+		  Bureaucrat \
+		  ShrubberyCreationForm \
+		  
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))

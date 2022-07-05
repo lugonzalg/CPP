@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:19 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 16:48:49 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:20:35 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ class Bureaucrat
 		int			_level;
 
 	public:
-		std::string const&	getName() const;
-		int	getLevel() const;
 
 		Bureaucrat();
 		Bureaucrat(int, std::string const&);
@@ -33,6 +31,10 @@ class Bureaucrat
 		void	addLevel();
 		void	decrLevel();
 		void	signForm(Form&);
+		void	executeForm(Form const&);
+
+		std::string const&	getName() const;
+		int					getLevel() const;
 
 	class GradeTooHighException : public std::exception
 	{

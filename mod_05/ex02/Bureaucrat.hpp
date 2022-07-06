@@ -31,6 +31,7 @@ class Bureaucrat
 		void	addLevel();
 		void	decrLevel();
 		void	signForm(Form&);
+
 		void	executeForm(Form const&);
 
 		std::string const&	getName() const;

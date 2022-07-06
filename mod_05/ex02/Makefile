@@ -12,7 +12,6 @@ FILES	= main \
 		  RobotomyRequestForm \
 		  ShrubberyCreationForm \
 		  PresidentialPardonForm
-		  
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))

@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/03 18:32:54 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 20:56:41 by lugonzal         ###   ########.fr       */
+/*   Created: 2022/07/03 16:19:09 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/07/06 21:34:31 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include <fstream>
+#include "Form.hpp"
+#include "Intern.hpp"
 
-class ShrubberyCreationForm : public Form
-{
-	private:
+int main() {
+	/*EX03*/
+	Intern	paco;
+	Form	*ptr;
 
-		std::string 		_tree[10];
-
-	public:
-		ShrubberyCreationForm(std::string const&);
-		~ShrubberyCreationForm();
-
-		void	action() const;
-};
+	ptr = paco.makeForm("robotomy request", "test");
+	delete ptr;
+	return 0;
+}

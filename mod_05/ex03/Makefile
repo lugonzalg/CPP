@@ -9,9 +9,11 @@ INC		= -I .
 FILES	= main \
 		  Form \
 		  Bureaucrat \
-		  RobotomyRequestForm \
+		  Intern \
 		  ShrubberyCreationForm \
-		  PresidentialPardonForm
+		  PresidentialPardonForm \
+		  RobotomyRequestForm 
+		  
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))

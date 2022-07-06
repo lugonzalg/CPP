@@ -1,23 +1,17 @@
-NAME	= FormExtra
+NAME	= Cast01
 
 RM		= rm -rf
-C++		= clang++
-CFLAGS	= -Wall -Werror -Wextra -g3
+C++		= clang++ -std=c++98
 SNTZ	= -fsanitize=address
-INC		= -I .
+CFLAGS	= -Wall -Werror -Wextra
 
 FILES	= main \
-		  Form \
-		  Bureaucrat \
-		  RobotomyRequestForm \
-		  ShrubberyCreationForm \
-		  PresidentialPardonForm
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))
 
 .cpp.o:
-	$(C++) $(CFLAGS) $(SNTZ) $(INC) -o $@ -c $^
+	$(C++) $(CFLAGS) $(SNTZ) -o $@ -c $^
 
 $(NAME): $(OBJ)
 	$(C++) $(CFLAGS) $(SNTZ) -o $(NAME) $(OBJ)
@@ -32,4 +26,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclea re

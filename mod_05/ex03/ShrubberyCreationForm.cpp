@@ -45,4 +45,5 @@ void	ShrubberyCreationForm::action() const {
 
 	for (int i = 0; i < 9; i++)
 		outFile << this->_tree[i] + '\n';
+
 }

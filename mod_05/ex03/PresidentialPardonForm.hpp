@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 19:25:40 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 21:26:47 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/06 21:16:46 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ class PresidentialPardonForm : public Form
 	private:
 
 	public:
-		PresidentialPardonForm();
-		~PresidentialPardonForm(std::string const&);
+		PresidentialPardonForm(std::string const&);
+		~PresidentialPardonForm();
 
 		virtual void action() const;
 };

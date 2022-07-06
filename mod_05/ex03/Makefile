@@ -9,7 +9,10 @@ INC		= -I .
 FILES	= main \
 		  Form \
 		  Bureaucrat \
+		  Intern \
 		  ShrubberyCreationForm \
+		  PresidentialPardonForm \
+		  RobotomyRequestForm 
 		  
 
 SRC		= $(addsuffix .cpp, $(FILES))

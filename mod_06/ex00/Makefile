@@ -3,9 +3,10 @@ NAME	= Cast01
 RM		= rm -rf
 C++		= clang++ -std=c++98
 SNTZ	= -fsanitize=address
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -g3
 
 FILES	= main \
+		  Cast
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))
@@ -26,4 +27,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclea re
+.PHONY: all clean fclea re run

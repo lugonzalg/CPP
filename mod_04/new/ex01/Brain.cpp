@@ -1,6 +1,10 @@
 #include "Brain.hpp"
 #include <iostream>
 
+/*************/
+/*CONSTRUCTOR*/
+/*************/
+
 Brain::Brain() {
     for (int i = 0; i < 100; i++)
         this->ideas[i] = "oiqkfem";
@@ -18,9 +22,17 @@ Brain::Brain(std::string const& idea) {
     std::cout << "String Brain constructor" << std::endl;
 }
 
+/*************/
+/*DESTRUCTOR*/
+/*************/
+
 Brain::~Brain() {
     std::cout << "Default Brain destructor" << std::endl;
 }
+
+/**********/
+/*OVERLOAD*/
+/**********/
 
 Brain&   Brain::operator= (Brain const& src) {
     for (int i = 0; i < 100; i++)

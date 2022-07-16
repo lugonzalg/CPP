@@ -1,6 +1,10 @@
 #include "Dog.hpp"
 #include <iostream>
 
+/*************/
+/*CONSTRUCTOR*/
+/*************/
+
 Dog::Dog() {
     this->_type = "Dog";
     this->_brain = new Brain();
@@ -17,18 +21,31 @@ Dog::Dog(std::string const& type) {
     std::cout << "String Dog constructor" << std::endl;
 }
 
+/*************/
+/*DESTRUCTOR*/
+/*************/
+
 Dog::~Dog() {
     std::cout << "Default Dog destructor" << std::endl;
     delete this->_brain;
 }
 
+/**********/
+/*OVERLOAD*/
+/**********/
+
 Dog&   Dog::operator= (Dog const& src) {
-    (void)src;
-    this->_type = "deep";
+    std::cout << "Dog Deep Copy" << std::endl;
+    std::cout << "OLD BRAIN: " << this->_brain << std::endl;
+    this->_type = src.getType();
     delete this->_brain;
     this->_brain = new Brain("deep");
-    //this->_brain = src._brain;
+    std::cout << "NEW BRAIN: " << this->_brain << std::endl;
     return (*this);
 }
+
+/*****************/
+/*MEMBER FUNCTION*/
+/*****************/
 
 void    Dog::makeSound() const { std::cout << "Guau!" << std::endl; }

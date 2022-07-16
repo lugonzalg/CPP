@@ -1,7 +1,7 @@
 #include "ScavTrap.hpp"
 #include <iostream>
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap() : ClapTrap() {
 	std::cout << "Inheretence default constructor" << std::endl;
 	this->setHitPoints(100);
 	this->setEnergy(50);

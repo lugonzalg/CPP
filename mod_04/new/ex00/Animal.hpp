@@ -9,15 +9,16 @@ class Animal
 
 	protected:
 		std::string _type;
+
 	public:
-		std::string const&	getType() const;
-		virtual void	makeSound() const;
-
-		Animal&	operator= (Animal const&);
-
 		Animal();
 		Animal(std::string const&);
 		Animal(Animal const&);
 		virtual ~Animal();
+
+		Animal&	operator= (Animal const&);
+
+		std::string const&	getType() const;
+		virtual void	makeSound() const;
 };
 #endif 

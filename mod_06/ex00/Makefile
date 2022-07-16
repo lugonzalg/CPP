@@ -3,7 +3,7 @@ NAME	= Cast01
 RM		= rm -rf
 C++		= clang++ -std=c++98
 SNTZ	= -fsanitize=address
-CFLAGS	= -Wall -Werror -Wextra -g3
+CFLAGS	= -Wall -Werror -Wextra -Wconversion -Wno-unused -g3
 
 FILES	= main \
 		  Cast

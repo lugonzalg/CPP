@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Cast.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/16 17:08:43 by lugonzal          #+#    #+#             */
+/*   Updated: 2022/07/16 18:11:30 by lugonzal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CAST_HPP
 #define CAST_HPP
 
@@ -12,17 +24,19 @@ class Cast
 		const char*			_c_str;
 		int					_n;
 		float				_f;
-		//double				_d;
+		double				_d;
 		char				_c;
-		bool				_has_f;
-		bool				_has_digit;
+
+		bool				_hasF;
+		bool				_hasDigit;
+		bool				_hasAlpha;
 		std::size_t			_len;
 
 		void	_detect();
 		void	_isFloat();
+		void	_isDouble();
 		void	_isInt();
 		void	_isChar();
-
 
 	public:
 
@@ -36,9 +50,10 @@ class Cast
 		void	setSTR(const char*);
 
 		float	getFloat() const;
-		float	getInt() const;
-		float	getChar() const;
-		float	getFlags() const;
+		double	getDouble() const;
+		int		getInt() const;
+		char	getChar() const;
+		bool	getFlags() const;
 
 		/*
 	class EmptySTR : public std::exception

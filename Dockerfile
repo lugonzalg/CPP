@@ -1,10 +1,16 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt install -y \
+RUN apt-get update && apt-get install -y \
     man \
     clang \
     make \
+    vim \
+    git \
+    curl \
+    zsh \
     valgrind \
-    gdb 
+    gdb
 
-#USER 1000:1000
+RUN  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+
+CMD ["zsh"]

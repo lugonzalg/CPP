@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:50 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 20:43:28 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:30:27 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ Form::Form(std::string const& name, int sign, int exec) : _name(name), _state(fa
 	//std::cout << "Form Init constructor" << std::endl;
 }
 
+Form::Form(Form const& src)	: _name(src.getName()), _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()) {
+	*this = src;
+}
+
 /**************/
 /*DESTRUCTORS*/
 /**************/
@@ -62,6 +66,15 @@ const char* Form::GradeTooLowException::what() const throw() {
 
 const char* Form::FormFalseStatus::what() const throw() {
 	return ("Form isn't signed, not available");// + type);
+}
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+Form&	Form::operator= (Form const& src)	{
+	this->_state = src.getState();;
+	return *this;
 }
 
 /*******************/

@@ -99,7 +99,7 @@ void	Form::execute(Bureaucrat const& bure) {
 	}
 }
 
-void	Form::action() const { std::cout << "Form: " + this->_name + " doesn't have any utility" << std::endl; } 
+void	Form::action() const { std::cout << "Form: " + this->_name + " doesn't have any utility" << std::endl; }
 
 /*********/
 /*SETTERS*/

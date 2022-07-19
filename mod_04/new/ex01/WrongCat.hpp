@@ -8,13 +8,13 @@ class WrongCat : public WrongAnimal
 	private:
 
 	public:
-		WrongCat&	operator= (WrongCat const&);
-
-		void	makeSound() const;
-
 		WrongCat();
 		WrongCat(std::string);
 		WrongCat(WrongCat const&);
 		~WrongCat();
+
+		WrongCat&	operator= (WrongCat const&);
+
+		void	makeSound() const;
 };
 #endif 

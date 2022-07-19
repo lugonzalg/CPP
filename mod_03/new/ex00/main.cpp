@@ -19,6 +19,6 @@ int main()
 	h3.takeDamage(h4.getDamage());
 
 	h2.beRepaired(h1.getEnergy());
-	std::cout << h2.getEnergy() << std::endl;
+	std::cout << h2.getHitPoints() << std::endl;
     return 0;
 }

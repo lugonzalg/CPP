@@ -20,6 +20,7 @@ class DiamondTrap :  public FragTrap,  public ScavTrap
 		DiamondTrap&	operator= (DiamondTrap const&);
 		void	whoAmI();
 		void	stats();
+		using ScavTrap::attack;
 };
 
 #endif

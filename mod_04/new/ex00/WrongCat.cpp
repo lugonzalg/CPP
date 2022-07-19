@@ -1,6 +1,10 @@
 #include "WrongCat.hpp"
 #include <iostream>
 
+/**************/
+/*CONSTRUCTOR*/
+/**************/
+
 WrongCat::WrongCat() {
     this->_type = "WrongCat";
     std::cout << "Default WrongCat constructor" << std::endl;
@@ -16,13 +20,25 @@ WrongCat::WrongCat(std::string type) {
     std::cout << "String WrongCat constructor" << std::endl;
 }
 
+/************/
+/*DESTRUCTOR*/
+/************/
+
 WrongCat::~WrongCat() {
     std::cout << "Default WrongCat destructor" << std::endl;
 }
+
+/**********/
+/*OVERLAOD*/
+/**********/
 
 WrongCat&   WrongCat::operator= (WrongCat const& src) {
     this->_type = src._type;
     return (*this);
 }
+
+/*****************/
+/*MEMBER FUNCTION*/
+/*****************/
 
 void    WrongCat::makeSound() const { std::cout << "Miau!" << std::endl; }

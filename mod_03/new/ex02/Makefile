@@ -8,6 +8,7 @@ INC		= -I .
 
 FILES	=   ClapTrap \
 			FragTrap \
+			ScavTrap \
             main
 
 SRC		= $(addsuffix .cpp, $(FILES))

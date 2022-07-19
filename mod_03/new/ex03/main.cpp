@@ -4,24 +4,29 @@
 
 int main()
 {
-    DiamondTrap    h1("Jimmy");
-    //DiamondTrap    h2("Tommy");
-	//DiamondTrap	h3(h1);
-	//DiamondTrap	h4;
+    DiamondTrap    dia1("Jimmy");
+    DiamondTrap    dia2("Tommy");
+	DiamondTrap	dia3(dia1);
+	DiamondTrap	dia4;
 
-	h1.whoAmI();
-	h1.stats();
 
-	//h4 = h2;
+	dia4 = dia2;
+
+	dia1.whoAmI();
+	dia1.stats();
+	std::cout << "HERO: \n" << dia1;
 	//NORMAL CASE
-	//h1.attack(h2.getName());
-	//h2.takeDamage(h1.getDamage());
+	std::cout << "NAME " << dia2.getName() << " - HP: " << dia2.getHitPoints() << std::endl;
+	dia1.attack(dia2.getName());
+	dia2.takeDamage(dia1.getDamage());
+	std::cout << "NAME " << dia2.getName() << " - HP: " << dia2.getHitPoints() << std::endl;
 
 	//COPY CASE
-	//h4.attack(h3.getName());
-	//h3.takeDamage(h4.getDamage());
+	dia4.attack(dia3.getName());
+	dia3.takeDamage(dia4.getDamage());
 
-	//h2.beRepaired(h1.getEnergy());
-	//std::cout << "ENERGY: " << h2.getEnergy() << std::endl;
+	dia2.beRepaired(dia1.getEnergy());
+	std::cout << "NAME " << dia2.getName() << " - HP: " << dia2.getHitPoints() << std::endl;
+	std::cout << "ENERGY: " << dia2.getEnergy() << std::endl;
     return 0;
 }

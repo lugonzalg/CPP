@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:19 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 21:20:35 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:37:52 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ class Bureaucrat
 	public:
 
 		Bureaucrat();
+		Bureaucrat(Bureaucrat const&);
 		Bureaucrat(int, std::string const&);
 		~Bureaucrat();
+
+		Bureaucrat&	operator= (Bureaucrat const&);
 
 		void	addLevel();
 		void	decrLevel();

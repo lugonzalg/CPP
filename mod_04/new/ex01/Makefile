@@ -19,6 +19,12 @@ OBJ		= $(addsuffix .o, $(FILES))
 
 all: $(NAME)
 
+debug: all
+	lldb ./$(NAME)
+
+run: all
+	./$(NAME)
+
 .cpp.o:
 	$(C++) $(CFLAGS) $(SNTZ) $(INC) -o $@ -c $^
 
@@ -33,4 +39,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean debug fclean re run

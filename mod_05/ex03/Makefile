@@ -26,6 +26,12 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+debug: all
+	lldb ./$(NAME)
+
+run: all
+	./$(NAME)
+
 clean:
 	$(RM) $(OBJ)
 
@@ -34,4 +40,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean debug fclean re run

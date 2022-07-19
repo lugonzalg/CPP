@@ -1,4 +1,4 @@
-NAME	= Jungle
+NAME	= ICharteria
 
 C++		= clang++ -std=c++98
 RM		= rm -rf

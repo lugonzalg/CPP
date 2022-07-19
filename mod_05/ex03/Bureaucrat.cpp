@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:24 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 20:42:51 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:38:51 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 /**************************/
 
 Bureaucrat::Bureaucrat() : _name("lukas"), _level(0) {}
+
+Bureaucrat::Bureaucrat(Bureaucrat const& src) {
+	*this = src;
+}
 
 Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level(level) {
 	try
@@ -76,6 +80,16 @@ void	Bureaucrat::executeForm(Form const& form) {
 		form.action();
 		std::cout << this->_name << " could execute " << form.getName() << " form succesfully" << std::endl;
 	}
+}
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+Bureaucrat&	Bureaucrat::operator= (Bureaucrat const& src) {
+	this->_name = src.getName();	
+	this->_level = src.getLevel();	
+	return *this;
 }
 
 /******************/

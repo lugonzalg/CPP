@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:30:30 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/06 21:34:31 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:45:53 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #include "Intern.hpp"
 
-/**************************/
-/*CONSTRUCTOR & DESTRUCTOR*/
-/**************************/
+/*************/
+/*CONSTRUCTOR*/
+/*************/
 
 Intern::Intern() {
 	this->formList[0].name = "robotomy request";
@@ -26,6 +26,14 @@ Intern::Intern() {
 	this->formList[2].name = "presidential request";
 	this->formList[2].ptr = &Intern::create_presidential;
 }
+
+Intern::Intern(Intern const& src) {
+	*this = src;
+}
+
+/************/
+/*DESTRUCTOR*/
+/************/
 
 Intern::~Intern() {
 	//std::cout << "Default Intern destructor" << std::endl;
@@ -70,6 +78,15 @@ Form	*Intern::create_presidential(std::string const& name) {
 
 const char	*Intern::NotFormMatch::what() const throw() {
 	return "Non existant Form -> ";
+}
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+Intern&	Intern::operator= (Intern const& src) {
+	(void)src;
+	return *this;
 }
 
 /*********/

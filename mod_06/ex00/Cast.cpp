@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:08:39 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/16 18:13:48 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/18 19:11:43 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,49 +63,47 @@ void	Cast::_detect() {
 			this->_hasDigit = true;
 		else if (isalpha(this->_c_str[i]) and this->_c_str[i] != 'f')
 			this->_hasAlpha = true;
+		else if (this->_c_str[i] == '.')
+			this->_hasDot = true;
 		i++;
 	}
 	this->_len = i;
 	if (this->_c_str[this->_len - 1] == 'f' and this->_hasDigit)
 		this->_hasF = true;
-	if (this->_hasF and this->_hasDigit and !this->_hasAlpha)
+	if (this->_hasF and this->_hasDigit and !this->_hasAlpha and this->_hasDot)
 		this->_isFloat();
-	else if (this->_hasDigit and !this->_hasAlpha)
+	else if (this->_hasDigit and !this->_hasAlpha and !this->_hasDot)
 		this->_isInt();
-	/*
-	else
+	else if (this->_hasDigit and this->_hasDot and !this->_hasAlpha)
+		this->_isDouble();
+	else if (this->_len == 1)
 		this->_isChar();
-		*/
 }
 
 void	Cast::_isFloat() {
+	std::cout << "Is Float" << std::endl;
 	std::istringstream(this->_str.erase(this->_len - 1)) >> this->_f;
 	this->_d = static_cast<double>(this->_f);
 	this->_n = static_cast<int>(this->_f);
-	this->_c = static_cast<char>(this->_n);
 }
 
 void	Cast::_isDouble() {
+	std::cout << "Is Double" << std::endl;
 	std::istringstream(this->_str) >> this->_d;
 	this->_f = static_cast<float>(this->_d);
 	this->_n = static_cast<int>(this->_d);
-	this->_c = static_cast<char>(this->_n);
 }
 
 void	Cast::_isInt() {
+	std::cout << "Is Int" << std::endl;
 	std::istringstream(this->_str) >> this->_n;
 	this->_d = static_cast<double>(this->_n);
 	this->_f = static_cast<float>(this->_n);
-	//std::ostringstream(this->_n) >> this->_c;
-	//this->_c = static_cast<char>(this->_n);
 }
 
 void	Cast::_isChar() {
-	//if (this->_n > 0 and this->_n < 128)
-	this->_c = static_cast<char>(this->_n);
-	//std::istringstream(this->_str) >> this->_c;
-	//this->_f = static_cast<float>(this->_c);
-	//this->_n = static_cast<int>(this->_c);
+	std::cout << "Is Char" << std::endl;
+	this->_c = *this->_c_str;
 }
 
 /**********/
@@ -142,14 +140,23 @@ bool	Cast::getFlags() const { return !this->_hasAlpha and (this->_hasF or this->
 
 std::ostream&	operator<< (std::ostream& os, Cast const& src)
 {
-	os << "CHAR: " << src.getChar() << std::endl;
+	int n;
+	std::ostringstream oss;
+
+	n = src.getInt();
 	if (src.getFlags())
 	{
+		if (n > 32 and n < 127)
+			os << "CHAR: " << static_cast<char>(n) << std::endl;
+		else
+			os << "CHAR: " << "impossible" << std::endl;
 		os << "INT: " << src.getInt() << std::endl;
 		os << "FLOAT: " << std::fixed << std::setprecision(1) << src.getFloat() << "f" << std::endl;
+		os << "DOUBLE: " << src.getDouble() << std::endl;
 	}
 	else
 	{
+		os << "CHAR: " << src.getChar() << std::endl;
 		os << "FLOAT: " << "imposible" << std::endl;
 		os << "INT: " << "imposible" << std::endl;
 	}

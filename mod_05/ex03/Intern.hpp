@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:29:12 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/06 21:34:32 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:43:23 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ class Intern //:  public ShrubberyCreationForm,  public RobotomyRequestForm,  pu
 	public:
 
 		Intern();
+		Intern(Intern const&);
 		~Intern();
+
+		Intern&	operator= (Intern const&);
 
 		Form	*makeForm(std::string const&, std::string const&);
 

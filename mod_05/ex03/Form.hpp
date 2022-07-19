@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:45 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/06 21:31:18 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/19 18:28:00 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ class Form
 
 		Form();
 		Form(std::string const&, int, int);
+		Form(Form const&);
 		virtual ~Form();
+
+		Form&	operator= (Form const&);
 
 		void			sign();
 		void			execute(Bureaucrat const&);

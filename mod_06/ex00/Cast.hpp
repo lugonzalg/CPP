@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:08:43 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/16 18:11:30 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/18 18:57:17 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ class Cast
 		bool				_hasF;
 		bool				_hasDigit;
 		bool				_hasAlpha;
+		bool				_hasDot;
 		std::size_t			_len;
 
 		void	_detect();

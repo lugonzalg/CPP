@@ -13,11 +13,13 @@ Cat::Cat() {
 
 Cat::Cat(Cat const& src) {
     std::cout << "Copy Cat constructor" << std::endl;
+    this->_brain = new Brain();
     *this = src;
 }
 
 Cat::Cat(std::string const& type) {
     this->_type = type;
+    this->_brain = new Brain();
     std::cout << "String Cat constructor" << std::endl;
 }
 
@@ -36,11 +38,8 @@ Cat::~Cat() {
 
 Cat&   Cat::operator= (Cat const& src) {
     std::cout << "Cat Deep Copy" << std::endl;
-    std::cout << "OLD BRAIN: " << this->_brain << std::endl;
+    *this->_brain = *src._brain;
     this->_type = src.getType();
-    delete this->_brain;
-    this->_brain = new Brain("deep");
-    std::cout << "NEW BRAIN: " << this->_brain << std::endl;
     return (*this);
 }
 
@@ -49,3 +48,4 @@ Cat&   Cat::operator= (Cat const& src) {
 /*****************/
 
 void    Cat::makeSound() const { std::cout << "Miau!" << std::endl; }
+void    Cat::brainAddr() const { std::cout << this->_brain << std::endl; }

@@ -3,18 +3,20 @@
 
 #include "Animal.hpp"
 
-class Dog : public Animal
+class Dog : virtual public Animal
 {
 	private:
+		Brain*	_brain;
 
 	public:
-		Dog&	operator= (Dog const&);
-
-		void	makeSound() const;
-
 		Dog();
 		Dog(std::string const&);
 		Dog(Dog const&);
 		~Dog();
+
+		Dog&	operator= (Dog const&);
+
+		void	makeSound() const;
+		void	brainAddr() const;
 };
 #endif 

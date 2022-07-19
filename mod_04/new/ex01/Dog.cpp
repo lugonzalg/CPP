@@ -13,12 +13,14 @@ Dog::Dog() {
 
 Dog::Dog(Dog const& src) {
     std::cout << "Copy Dog constructor" << std::endl;
+    this->_brain = new Brain();
     *this = src;
 }
 
 Dog::Dog(std::string const& type) {
-    this->_type = type;
     std::cout << "String Dog constructor" << std::endl;
+    this->_brain = new Brain();
+    this->_type = type;
 }
 
 /*************/
@@ -36,11 +38,8 @@ Dog::~Dog() {
 
 Dog&   Dog::operator= (Dog const& src) {
     std::cout << "Dog Deep Copy" << std::endl;
-    std::cout << "OLD BRAIN: " << this->_brain << std::endl;
     this->_type = src.getType();
-    delete this->_brain;
-    this->_brain = new Brain("deep");
-    std::cout << "NEW BRAIN: " << this->_brain << std::endl;
+    *this->_brain = *src._brain;
     return (*this);
 }
 
@@ -49,3 +48,4 @@ Dog&   Dog::operator= (Dog const& src) {
 /*****************/
 
 void    Dog::makeSound() const { std::cout << "Guau!" << std::endl; }
+void    Dog::brainAddr() const { std::cout << this->_brain << std::endl; }

@@ -8,7 +8,6 @@
 Animal::Animal() {
     std::cout << "Default constructor" << std::endl;
     this->_type     = "Eucariot";
-    this->_brain    = NULL;
 }
 
 Animal::Animal(Animal const& src) {
@@ -18,7 +17,6 @@ Animal::Animal(Animal const& src) {
 
 Animal::Animal(std::string const& type) : _type(type) {
     std::cout << "String constructor" << std::endl;
-    this->_brain = NULL;
 }
 
 /*************/
@@ -35,8 +33,6 @@ Animal::~Animal() {
 
 Animal&   Animal::operator= (Animal const& src) {
     this->_type = src._type;
-    this->_brain = new Brain();
-    //this->_brain = this->_brain; //PELIGRO
     return (*this);
 }
 

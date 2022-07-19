@@ -6,6 +6,7 @@ SNTZ	= -fsanitize=address
 CFLAGS	= -Wall -Werror -Wextra
 
 FILES	= main \
+		  Dict
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))

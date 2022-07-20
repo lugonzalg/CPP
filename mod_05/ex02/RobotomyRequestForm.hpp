@@ -17,8 +17,12 @@ class RobotomyRequestForm : public Form
 	private:
 
 	public:
+		RobotomyRequestForm();
+		RobotomyRequestForm(RobotomyRequestForm const&);
 		RobotomyRequestForm(std::string const&);
 		~RobotomyRequestForm();
+
+		RobotomyRequestForm&	operator= (RobotomyRequestForm const&);
 
 		virtual void	action() const ;
 };

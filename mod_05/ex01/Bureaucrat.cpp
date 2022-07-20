@@ -13,29 +13,36 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-/***************************/
-/*CINSTRUCTOR & DESTRUCTOR*/
-/**************************/
+#define HIGHLEVEL	1
+#define LOWLEVEL 	150
 
-Bureaucrat::Bureaucrat() : _name("lukas"), _level(0) {}
+/************/
+/*INSTRUCTOR*/
+/************/
+
+Bureaucrat::Bureaucrat() : _name("lukas"), _level(150) {}
+
+Bureaucrat::Bureaucrat(Bureaucrat const& src) : _name(src.getName()) {
+	*this = src;
+}
 
 Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level(level) {
 	try
 	{
-		if (level < 0)
+		if (level < HIGHLEVEL)
 			throw Bureaucrat::GradeTooHighException();
-		else if (_level > 150)
+		else if (_level > LOWLEVEL)
 			throw Bureaucrat::GradeTooLowException();
 	}
 	catch (Bureaucrat::GradeTooLowException& e)
 	{
 		std::cout << e << std::endl;
-		std::cout << *this;
+		std::cout << *this << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException& e)
 	{
 		std::cout << e << std::endl;
-		std::cout << *this;
+		std::cout << *this << std::endl;
 	}
 }
 
@@ -46,15 +53,15 @@ Bureaucrat::~Bureaucrat() {}
 /******************/
 
 void	Bureaucrat::addLevel() {
-	this->_level++;
-	if (_level > 150)
-		throw Bureaucrat::GradeTooLowException();
+	this->_level--;
+	if (_level < HIGHLEVEL)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 void	Bureaucrat::decrLevel() {
-	this->_level--;
-	if (_level < 0)
-		throw Bureaucrat::GradeTooHighException();
+	this->_level++;
+	if (_level > LOWLEVEL)
+		throw Bureaucrat::GradeTooLowException();
 }
 
 void	Bureaucrat::signForm(Form& form) {
@@ -64,6 +71,18 @@ void	Bureaucrat::signForm(Form& form) {
 		std::cout << this->getName() + " cannot exec "+ form.getName() + " because its level is: " + std::to_string(this->getLevel());
 	else
 		form.sign();
+}
+
+void	Bureaucrat::executeForm(Form const& form) {
+	if (!form.getState())
+		std::cout << this->_name << " couldn't execute this form, because isn't signed yet" << std::endl;
+	else if (form.getGradeExec() < this->_level)
+		std::cout << this->_name << " couldn't execute this form, because it's execution level is too high" << std::endl;
+	else
+	{
+		form.action();
+		std::cout << this->_name << " could execute " << form.getName() << " form succesfully" << std::endl;
+	}
 }
 
 /******************/
@@ -80,6 +99,15 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw() {
 
 const char*	Bureaucrat::FormStateFalse::what() const throw() {
 	return ("This Form isn't signed to execute");
+}
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+Bureaucrat&	Bureaucrat::operator= (Bureaucrat const& src) {
+	this->_level = src.getLevel();
+	return *this;
 }
 
 /**********/
@@ -104,7 +132,7 @@ std::ostream& operator<< (std::ostream& os, Bureaucrat::GradeTooLowException& e)
 }
 
 std::ostream& operator<< (std::ostream& os, Bureaucrat& src) {
-	os << src.getName() + " bureaucrat grade," + std::to_string(src.getLevel());
+	os << src.getName() + " bureaucrat grade," + std::to_string(src.getLevel()) << std::endl;
 	return os;
 }
 

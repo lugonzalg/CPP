@@ -20,8 +20,13 @@ class ShrubberyCreationForm : public Form
 		std::string 		_tree[10];
 
 	public:
+		ShrubberyCreationForm();
 		ShrubberyCreationForm(std::string const&);
+		ShrubberyCreationForm(ShrubberyCreationForm const&);
 		~ShrubberyCreationForm();
 
+		ShrubberyCreationForm&	operator= (ShrubberyCreationForm const&);
+
 		void	action() const;
+		void	_initTree();
 };

@@ -13,23 +13,27 @@
 #include <iostream>
 #include "ShrubberyCreationForm.hpp"
 
-/***************************/
-/*CONSTRUCTOR & DESTRUCTOR*/
-/***************************/
+/*************/
+/*CONSTRUCTOR*/
+/*************/
+
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137) {
+	this->_target = "lukas";
+	this->_initTree();
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const& src) {
+	*this = src;
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target) : Form("ShrubberyCreationForm", 145, 137) {
-	//std::cout << "Default constructor for ShrubberyCreationForm" << std::endl;
 	this->_target = target;
-	this->_tree[0] = "      _-_";
-	this->_tree[1] = "   /~~   ~~\\";
-	this->_tree[2] = "  /~~       ~~\\";
-	this->_tree[3] = " {             }";
-	this->_tree[4] = "  \\  _-  -_  /";
-	this->_tree[5] = " ~  \\ //  ~";
-	this->_tree[6] = "_- -   | | _- _";
-	this->_tree[7] = "  _ -  | |   -_";
-	this->_tree[8] = "      // \\";
+	this->_initTree();
 }
+
+/************/
+/*DESTRUCTOR*/
+/************/
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
 	std::cout << "Default destructor for ShrubberyCreationForm" << std::endl;
@@ -45,4 +49,25 @@ void	ShrubberyCreationForm::action() const {
 
 	for (int i = 0; i < 9; i++)
 		outFile << this->_tree[i] + '\n';
+}
+
+void	ShrubberyCreationForm::_initTree() {
+	this->_tree[0] = "      _-_";
+	this->_tree[1] = "   /~~   ~~\\";
+	this->_tree[2] = "  /~~       ~~\\";
+	this->_tree[3] = " {             }";
+	this->_tree[4] = "  \\  _-  -_  /";
+	this->_tree[5] = " ~  \\ //  ~";
+	this->_tree[6] = "_- -   | | _- _";
+	this->_tree[7] = "  _ -  | |   -_";
+	this->_tree[8] = "      // \\";
+}
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+ShrubberyCreationForm&	ShrubberyCreationForm::operator= (ShrubberyCreationForm const& src) {
+	this->_target = src._target;
+	return *this;
 }

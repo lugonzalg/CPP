@@ -22,6 +22,10 @@ Form::Form() : _name("no name"), _state(false), _gradeSign(-1), _gradeExec(-1) {
 	//std::cout << "Form Default constructor, Danger!" << std::endl;
 }
 
+Form::Form(Form const& src) : _gradeSign(src.getGradeSign()), _gradeExec(src.getGradeExec()) {
+	*this = src;
+}
+
 Form::Form(std::string const& name, int sign, int exec) : _name(name), _state(false), _gradeSign(sign), _gradeExec(exec) {
 	try {
 		if (sign < 0 or exec < 0)
@@ -100,6 +104,15 @@ void	Form::execute(Bureaucrat const& bure) {
 }
 
 void	Form::action() const { std::cout << "Form: " + this->_name + " doesn't have any utility" << std::endl; }
+
+/**********/
+/*OPERATOR*/
+/**********/
+
+Form&	Form::operator= (Form const& src) {
+	this->_state = src._state;
+	return *this;
+}
 
 /*********/
 /*SETTERS*/

@@ -19,14 +19,17 @@
 class Bureaucrat
 {
 	private:
-		std::string _name;
-		int			_level;
+		std::string const	_name;
+		int					_level;
 
 	public:
 
 		Bureaucrat();
+		Bureaucrat(Bureaucrat const&);
 		Bureaucrat(int, std::string const&);
 		~Bureaucrat();
+
+		Bureaucrat& operator= (Bureaucrat const&);
 
 		void	addLevel();
 		void	decrLevel();

@@ -20,13 +20,13 @@ int main() {
 	Form	*ptr;
 
 	ptr = paco.makeForm("robotomy request", "test");
-	if (ptr) std::cout << "NAME: " << ptr->getName() << std::endl;
+	if (ptr) std::cout << ptr;
 	delete ptr;
 	ptr = paco.makeForm("shrubbery request", "test");
-	if (ptr) std::cout << "NAME: " << ptr->getName() << std::endl;
+	if (ptr) std::cout << ptr;
 	delete ptr;
 	ptr = paco.makeForm("presidential request", "test");
-	if (ptr) std::cout << "NAME: " << ptr->getName() << std::endl;
+	if (ptr) std::cout << ptr;
 	delete ptr;
 	ptr = paco.makeForm("lukas request", "test");
 	return 0;

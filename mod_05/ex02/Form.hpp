@@ -33,8 +33,11 @@ class Form
 	public:
 
 		Form();
+		Form(Form const&);
 		Form(std::string const&, int, int);
 		~Form();
+
+		Form&	operator= (Form const&);
 
 		void			sign();
 		void			execute(Bureaucrat const&);

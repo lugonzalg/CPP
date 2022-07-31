@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:45 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 20:43:17 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 20:00:41 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ class Form
 			virtual const char*	what() const throw();
 	};
 
+	class FormTrueStatus : public std::exception
+	{
+		public:
+			virtual const char*	what() const throw();
+	};
+
 	class FormFalseStatus : public std::exception
 	{
 		public:
@@ -69,8 +75,9 @@ class Form
 
 };
 
+std::ostream&	operator<< (std::ostream&, Form const&);
 std::ostream&	operator<< (std::ostream&, Form::GradeTooHighException const&);
 std::ostream&	operator<< (std::ostream&, Form::GradeTooLowException const&);
 std::ostream&	operator<< (std::ostream&, Form::FormFalseStatus const&);
-
+std::ostream&	operator<< (std::ostream&, Form::FormTrueStatus const&);
 #endif

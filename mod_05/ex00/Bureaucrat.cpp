@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:24 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 17:26:43 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:46:34 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 #define HIGHLEVEL	1
 #define LOWLEVEL 	150
 
-/***************************/
-/*CINSTRUCTOR & DESTRUCTOR*/
-/**************************/
+#define OK		 	"\033[92m"
+#define FAIL 		"\033[91m"
+#define END 		"\033[0m"
+
+/************/
+/*INSTRUCTOR*/
+/************/
 
 Bureaucrat::Bureaucrat() : _name("lukas"), _level(150) {}
 
@@ -29,20 +33,26 @@ Bureaucrat::Bureaucrat(Bureaucrat const& src) : _name(src.getName()) {
 Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level(level) {
 	try
 	{
-		if (level < HIGHLEVEL)
+		if (level < HIGHLEVEL) {
+			std::cout << FAIL << "Level Error, ";
 			throw Bureaucrat::GradeTooHighException();
-		else if (_level > LOWLEVEL)
+		}
+		else if (_level > LOWLEVEL) {
+			std::cout << FAIL << "Level Error, ";
 			throw Bureaucrat::GradeTooLowException();
+		}
+		std::cout << OK << "Bureaucrat succesfully instated" << END << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << e << std::endl;
-		std::cout << *this << std::endl;
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
+	//	std::cout << *this << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException& e)
 	{
-		std::cout << e << std::endl;
-		std::cout << *this << std::endl;
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
 	}
 }
 
@@ -76,10 +86,6 @@ const char*	Bureaucrat::GradeTooLowException::what() const throw() {
 	return ("Level too Low Exception");
 }
 
-const char*	Bureaucrat::FormStateFalse::what() const throw() {
-	return ("This Form isn't signed to execute");
-}
-
 /**********/
 /*OPERATOR*/
 /**********/
@@ -111,11 +117,8 @@ std::ostream& operator<< (std::ostream& os, Bureaucrat::GradeTooLowException& e)
 }
 
 std::ostream& operator<< (std::ostream& os, Bureaucrat& src) {
-	os << src.getName() + " bureaucrat grade," + std::to_string(src.getLevel());
-	return os;
-}
-
-std::ostream& operator<< (std::ostream& os, Bureaucrat::FormStateFalse& e) {
-	os << e.what();
+	os << "//////BUREAUCRAT///////" << std::endl;
+	os << "NAME: " << src.getName() << std::endl;
+	os << "GRADE: " << src.getLevel() << std::endl;
 	return os;
 }

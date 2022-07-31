@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:24 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 17:26:43 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:19:27 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #define HIGHLEVEL	1
 #define LOWLEVEL 	150
+#define OK		 	"\033[92m"
+#define FAIL 		"\033[91m"
+#define END 		"\033[0m"
 
 /************/
 /*INSTRUCTOR*/
@@ -29,20 +32,26 @@ Bureaucrat::Bureaucrat(Bureaucrat const& src) : _name(src.getName()) {
 Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level(level) {
 	try
 	{
-		if (level < HIGHLEVEL)
+		if (level < HIGHLEVEL) {
+			std::cout << FAIL << "Level Error, ";
 			throw Bureaucrat::GradeTooHighException();
-		else if (_level > LOWLEVEL)
+		}
+		else if (_level > LOWLEVEL) {
+			std::cout << FAIL << "Level Error, ";
 			throw Bureaucrat::GradeTooLowException();
+		}
+		std::cout << OK << "Bureaucrat succesfully instated" << END << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << e << std::endl;
-		std::cout << *this << std::endl;
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
+	//	std::cout << *this << std::endl;
 	}
 	catch (Bureaucrat::GradeTooHighException& e)
 	{
-		std::cout << e << std::endl;
-		std::cout << *this << std::endl;
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
 	}
 }
 
@@ -66,11 +75,14 @@ void	Bureaucrat::decrLevel() {
 
 void	Bureaucrat::signForm(Form& form) {
 	if (form.getState())
-		std::cout << this->getName() + " cannot sign "+ form.getName() + " because Form isn't available (Already Signed)" << std::endl;
+		std::cout << FAIL << this->getName() + " cannot sign "+ form.getName() + " because Form isn't available (Already Signed)" << std::endl;
 	else if (form.getGradeSign() < this->_level)
-		std::cout << this->getName() + " cannot exec "+ form.getName() + " because its level is: " + std::to_string(this->getLevel());
-	else
+		std::cout << FAIL << this->getName() + " cannot sign "+ form.getName() + " because its level is too low: " << this->getLevel() << std::endl;
+	else {
+		std::cout << OK << this->getName() + " signed "+ form.getName() + " succesfully" << std::endl;
 		form.sign();
+	}
+	std::cout << END;
 }
 
 void	Bureaucrat::executeForm(Form const& form) {
@@ -132,7 +144,9 @@ std::ostream& operator<< (std::ostream& os, Bureaucrat::GradeTooLowException& e)
 }
 
 std::ostream& operator<< (std::ostream& os, Bureaucrat& src) {
-	os << src.getName() + " bureaucrat grade," + std::to_string(src.getLevel()) << std::endl;
+	os << "//////BUREAUCRAT///////" << std::endl;
+	os << "NAME: " << src.getName() << std::endl;
+	os << "GRADE: " << src.getLevel() << std::endl;
 	return os;
 }
 

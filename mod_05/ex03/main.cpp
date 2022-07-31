@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:19:09 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/19 18:32:45 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 21:31:51 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int main() {
 	Form	*ptr;
 
 	ptr = paco.makeForm("robotomy request", "test");
-	if (ptr) std::cout << ptr;
+	if (ptr) std::cout << ptr << std::endl;
 	delete ptr;
 	ptr = paco.makeForm("shrubbery request", "test");
-	if (ptr) std::cout << ptr;
+	if (ptr) std::cout << ptr << std::endl;
 	delete ptr;
 	ptr = paco.makeForm("presidential request", "test");
-	if (ptr) std::cout << ptr;
+	if (ptr) std::cout << ptr << std::endl;
 	delete ptr;
 	ptr = paco.makeForm("lukas request", "test");
+	std::cout << ptr << std::endl;
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:32:59 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/05 21:20:28 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 21:26:20 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string const& target) : Form("
 /************/
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {
-	std::cout << "Default destructor for ShrubberyCreationForm" << std::endl;
+//	std::cout << "Default destructor for ShrubberyCreationForm" << std::endl;
 }
 
 /******************/

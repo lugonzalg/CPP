@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 19:25:36 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/20 17:21:11 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 21:30:53 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*CONSTRUCTOR*/
 /**************************/
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("LukasForm", -1, -1) {
+PresidentialPardonForm::PresidentialPardonForm() : Form("LukasForm", 25, 5) {
 	this->_target = _target;
 	//std::cout << "Default constructor for PresidentialPardonForm" << std::endl;
 }

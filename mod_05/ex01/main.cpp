@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:19:09 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/03 17:32:22 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 19:17:58 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,56 @@
 #include <iostream>
 
 int main() {
-	Bureaucrat	b1;
-	Bureaucrat	b2(5, "Paco");
-	Bureaucrat	b_copy(b2);
-	Bureaucrat	b3(150, "Jummy");
-	Form		f1("start", 10, 200);
+	Bureaucrat	lukas;
+	std::cout << "DEFAULT: \n" << lukas << std::endl;
 
-	std::cout << b1;
-	std::cout << b2;
+	Bureaucrat	paco(5, "Paco");
+	std::cout << paco << std::endl;
 
-	f1.beSigned(b3);
-	f1.beSigned(b2);
-	b2.signForm(f1);
-	b2.signForm(f1);
+	Bureaucrat	paClon(paco);
+	std::cout << "COPY: \n" << paClon << std::endl;
 
-	std::cout << b1;
-	b1 = b2;
-	std::cout << b1;
-	std::cout << b2;
+	Bureaucrat	keanu(0, "Keanu");
+	std::cout << keanu << std::endl;
+
+	Bureaucrat	jimmy(151, "Jimmy");
+	std::cout << jimmy << std::endl;
+
+	Form		form_1("test1", 10, 15);
+	std::cout << form_1 << std::endl;
+
+	Form		form_2("test2", 10, 15);
+	std::cout << form_2 << std::endl;
+
+
+	Form		form_3("test2", 10, 15);
+	std::cout << form_2 << std::endl;
+
+	Form		form_4("test3", 10, 200);
+	std::cout << form_3 << std::endl;
+
+	Form		form_5("test4", 0, 20);
+	std::cout << form_4 << std::endl;
+
+	std::cout << std::endl;
+	form_1.beSigned(paco);
+
+	std::cout << std::endl;
+	form_1.beSigned(paco);
+
+	std::cout << std::endl;
+	form_2.beSigned(paClon);
+
+	std::cout << std::endl;
+	form_2.beSigned(paClon);
+
+	std::cout << std::endl;
+	jimmy.signForm(form_3);
+
+	std::cout << std::endl;
+	paco.signForm(form_3);
+
+	std::cout << std::endl;
+	paco.signForm(form_3);
 	return 0;
 }

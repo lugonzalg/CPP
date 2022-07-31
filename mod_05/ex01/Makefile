@@ -21,6 +21,9 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+run: all
+	./$(NAME)
+
 clean:
 	$(RM) $(OBJ)
 
@@ -29,4 +32,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run

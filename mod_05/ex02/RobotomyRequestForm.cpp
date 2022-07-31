@@ -6,11 +6,14 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:33:57 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/06 20:01:02 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 21:26:23 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <time.h>
+#include <cstdlib>
+
 #include "RobotomyRequestForm.hpp"
 
 /****************************/
@@ -19,16 +22,19 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45) {
 	this->_target = "Lukas";
+	srand(time(NULL));
 	//std::cout << "Default constructor for RobotomyRequestForm" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const& src) {
 	*this = src;
+	srand(time(NULL));
 	//std::cout << "Default constructor for RobotomyRequestForm" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const& target) : Form("RobotomyRequestForm", 72, 45) {
 	this->_target = target;
+	srand(time(NULL));
 	//std::cout << "Default constructor for RobotomyRequestForm" << std::endl;
 }
 

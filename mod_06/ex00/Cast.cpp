@@ -6,16 +6,16 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:08:39 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/18 19:11:43 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:13:45 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*STRING TO INT*/
+/*https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int*/
 
 /*****/
 /*SRC*/
 /*****/
-
-/*STRING TO INT*/
-/*https://stackoverflow.com/questions/7663709/how-can-i-convert-a-stdstring-to-int*/
 
 #include "Cast.hpp"
 
@@ -78,6 +78,8 @@ void	Cast::_detect() {
 		this->_isDouble();
 	else if (this->_len == 1)
 		this->_isChar();
+	else
+		this->_c = 0;
 }
 
 void	Cast::_isFloat() {
@@ -156,8 +158,12 @@ std::ostream&	operator<< (std::ostream& os, Cast const& src)
 	}
 	else
 	{
-		os << "CHAR: " << src.getChar() << std::endl;
-		os << "FLOAT: " << "imposible" << std::endl;
+		if (n > 32 and n < 127)
+			os << "CHAR: " << static_cast<char>(n) << std::endl;
+		else
+			os << "CHAR: " << "impossible" << std::endl;
+		os << "FLOAT: " << "nanf" << std::endl;
+		os << "DOUBLE: " << "nan" << std::endl;
 		os << "INT: " << "imposible" << std::endl;
 	}
 	return os;

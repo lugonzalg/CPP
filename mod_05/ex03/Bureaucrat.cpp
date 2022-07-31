@@ -6,16 +6,16 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:24 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/19 18:38:51 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/07/31 13:00:36 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-/***************************/
-/*CINSTRUCTOR & DESTRUCTOR*/
-/**************************/
+/*************/
+/*CONSTRUCTOR*/
+/*************/
 
 Bureaucrat::Bureaucrat() : _name("lukas"), _level(0) {}
 
@@ -42,6 +42,10 @@ Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level
 		std::cout << *this;
 	}
 }
+
+/*************/
+/*DESTRUCTOR*/
+/*************/
 
 Bureaucrat::~Bureaucrat() {}
 

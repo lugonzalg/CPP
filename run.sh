@@ -8,7 +8,7 @@ function build
 function run
 {
     #docker run -it --rm --name cpp_env -v ${PWD}:/tmp/ cpp /bin/bash
-    docker run -it --rm --name cpp_env -v ${PWD}:/tmp/ -v ${PWD}/config:/root cpp /bin/bash
+    docker run -it --rm --name cpp_env -p 2022:22 -v ${PWD}:/tmp/ -v ${PWD}/config:/root cpp /bin/bash
 }
 
 if [[ "$1" = "run" ]]; then

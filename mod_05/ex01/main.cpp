@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:19:09 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 19:17:58 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/01 21:33:46 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,86 @@
 #include "Form.hpp"
 #include <iostream>
 
+#include "Bureaucrat.hpp"
+#include <iostream>
+
+#define OK		 	"\033[92m"
+#define FAIL 		"\033[91m"
+#define END 		"\033[0m"
+
+static Form	*newForm(std::string const& name, int sign, int exec) {
+	Form	*newFo;
+
+	newFo = NULL;
+	try {
+		newFo = new Form(name, sign, exec);
+		std::cout << OK << "Form succesfully instated" << END << std::endl;
+		std::cout << *newFo << std::endl;
+	}
+	catch (Form::GradeTooHighException& e) {
+		std::cout << "Form Constructor: " << e << END;
+	}
+	catch (Form::GradeTooLowException& e) {
+		std::cout << "Form Constructor: " << e << END;
+	}
+	return newFo;
+}
+
+static Bureaucrat	*newBureaucrat(std::string const& name, int level) {
+	Bureaucrat	*newBure;
+
+	newBure= NULL;
+	try {
+		newBure = new Bureaucrat(level, name);
+		std::cout << *newBure;
+	}
+	catch (Bureaucrat::GradeTooLowException& e) {
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
+	}
+	catch (Bureaucrat::GradeTooHighException& e) {
+		std::cout << "Bureaucrat constructor: ";
+		std::cout << e << std::endl << END;
+	}
+	return newBure;
+}
+
 int main() {
-	Bureaucrat	lukas;
-	std::cout << "DEFAULT: \n" << lukas << std::endl;
+	Bureaucrat	*bureList[4];
+	Form		*formList[4];
 
-	Bureaucrat	paco(5, "Paco");
-	std::cout << paco << std::endl;
+	Bureaucrat	*lowBure;
+	Bureaucrat	*highBure;
+	Form		*lowForm;
+	Form		*highForm;
 
-	Bureaucrat	paClon(paco);
-	std::cout << "COPY: \n" << paClon << std::endl;
+	srand( (unsigned)time(NULL) );
+	for (int i = 0; i < 4; i++) {
+		bureList[i] = newBureaucrat("paco", rand() % 149 + 1);
+	}
+	srand( (unsigned)time(NULL) );
+	for (int i = 0; i < 4; i++) {
+		formList[i] = newForm("test", rand() % 149 + 1, rand() % 149 + 1);
+	}
 
-	Bureaucrat	keanu(0, "Keanu");
-	std::cout << keanu << std::endl;
+	highBure = newBureaucrat("paco", 0);
+	lowBure = newBureaucrat("paco", 1234);
+	highForm = newForm("test", 0, 123);
+	lowForm = newForm("test", 1234, 123);
 
-	Bureaucrat	jimmy(151, "Jimmy");
-	std::cout << jimmy << std::endl;
+	std::cout << "COPY: " << std::endl;
+	std::cout << *bureList[0] << std::endl;
+	Bureaucrat	paCopy(*bureList[0]);
+	std::cout << paCopy << std::endl;
 
-	Form		form_1("test1", 10, 15);
-	std::cout << form_1 << std::endl;
+	for (int i = 0; i < 2; i++) {
+		formList[i]->beSigned(*bureList[i]);
+		bureList[2 + i]->signForm(*formList[2 + i]);
+	}
+	return 0;
+}
 
-	Form		form_2("test2", 10, 15);
-	std::cout << form_2 << std::endl;
-
-
-	Form		form_3("test2", 10, 15);
-	std::cout << form_2 << std::endl;
-
-	Form		form_4("test3", 10, 200);
-	std::cout << form_3 << std::endl;
-
-	Form		form_5("test4", 0, 20);
-	std::cout << form_4 << std::endl;
-
-	std::cout << std::endl;
-	form_1.beSigned(paco);
-
-	std::cout << std::endl;
-	form_1.beSigned(paco);
-
-	std::cout << std::endl;
-	form_2.beSigned(paClon);
-
-	std::cout << std::endl;
-	form_2.beSigned(paClon);
-
+/*int main() {
 	std::cout << std::endl;
 	jimmy.signForm(form_3);
 
@@ -67,4 +103,4 @@ int main() {
 	std::cout << std::endl;
 	paco.signForm(form_3);
 	return 0;
-}
+}*/

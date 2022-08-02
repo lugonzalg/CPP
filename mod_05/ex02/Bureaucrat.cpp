@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:24 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 21:30:54 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:40:32 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,15 @@ Bureaucrat::Bureaucrat(Bureaucrat const& src) : _name(src.getName()) {
 }
 
 Bureaucrat::Bureaucrat(int level, std::string const& name) : _name(name), _level(level) {
-	try
-	{
-		if (level < HIGHLEVEL) {
-			std::cout << FAIL << "Level Error, ";
-			throw Bureaucrat::GradeTooHighException();
-		}
-		else if (_level > LOWLEVEL) {
-			std::cout << FAIL << "Level Error, ";
-			throw Bureaucrat::GradeTooLowException();
-		}
-		std::cout << OK << "Bureaucrat succesfully instated" << END << std::endl;
+	if (level < HIGHLEVEL) {
+		std::cout << FAIL << "Level Error, ";
+		throw Bureaucrat::GradeTooHighException();
 	}
-	catch (Bureaucrat::GradeTooLowException& e)
-	{
-		std::cout << "Bureaucrat constructor: ";
-		std::cout << e << std::endl << END;
-	//	std::cout << *this << std::endl;
+	else if (_level > LOWLEVEL) {
+		std::cout << FAIL << "Level Error, ";
+		throw Bureaucrat::GradeTooLowException();
 	}
-	catch (Bureaucrat::GradeTooHighException& e)
-	{
-		std::cout << "Bureaucrat constructor: ";
-		std::cout << e << std::endl << END;
-	}
+	std::cout << OK << "Bureaucrat succesfully instated" << END << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {}
@@ -87,13 +73,13 @@ void	Bureaucrat::signForm(Form& form) {
 
 void	Bureaucrat::executeForm(Form const& form) {
 	if (!form.getState())
-		std::cout << FAIL << this->_name << " couldn't execute this form, because isn't signed yet" << END << std::endl;
+		std::cout << this->_name << " couldn't execute this form, because isn't signed yet" << std::endl;
 	else if (form.getGradeExec() < this->_level)
-		std::cout << FAIL << this->_name << " couldn't execute this form, because it's execution level is too high" << END << std::endl;
+		std::cout << this->_name << " couldn't execute this form, because it's execution level is too high" << std::endl;
 	else
 	{
 		form.action();
-		std::cout << OK << this->_name << " could execute " << form.getName() << " form succesfully" << END << std::endl;
+		std::cout << this->_name << " could execute " << form.getName() << " form succesfully" << std::endl;
 	}
 }
 

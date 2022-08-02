@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:19:09 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/08/01 21:33:46 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:34:24 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,42 @@ static Bureaucrat	*newBureaucrat(std::string const& name, int level) {
 	return newBure;
 }
 
+static void	formSign(Form *form, Bureaucrat *bure) {
+	try {
+		form->beSigned(*bure);
+	}
+	catch (Form::GradeTooHighException& e)
+	{
+		std::cout << e;
+	}
+		catch (Form::FormTrueStatus& e)
+	{
+		std::cout << e;
+	}
+}
+
+static void	formExec(Form *form, Bureaucrat *bure) {
+	try {
+		form->execute(*bure);
+	}
+	catch (Form::GradeTooHighException& e)
+	{
+		std::cout << e;
+	}
+	catch (Form::FormFalseStatus& e)
+	{
+		std::cout << e;
+	}
+}
+
 int main() {
 	Bureaucrat	*bureList[4];
 	Form		*formList[4];
 
-	Bureaucrat	*lowBure;
 	Bureaucrat	*highBure;
-	Form		*lowForm;
+	Bureaucrat	*lowBure;
 	Form		*highForm;
+	Form		*lowForm;
 
 	srand( (unsigned)time(NULL) );
 	for (int i = 0; i < 4; i++) {
@@ -87,20 +115,26 @@ int main() {
 	std::cout << paCopy << std::endl;
 
 	for (int i = 0; i < 2; i++) {
-		formList[i]->beSigned(*bureList[i]);
-		bureList[2 + i]->signForm(*formList[2 + i]);
+		std::cout << "FIRST ATTEMPT : " << std::endl;
+		formSign(formList[i], bureList[i]);
+		std::cout << "\nSECOND ATTEMPT : " << std::endl;
+		formSign(formList[i], bureList[i]);
+		std::cout << "FIRST ATTEMPT EXECUTE: " << std::endl;
+		formExec(formList[i], bureList[i]);
+		std::cout << "\nSECOND ATTEMPT EXECUTE: " << std::endl;
+		formExec(formList[i], bureList[i]);
+		delete formList[i];
+		delete bureList[i];
+		std::cout << "\nFIRST ATTEMPT : " << std::endl;
+		formSign(formList[i + 2], bureList[i + 2]);
+		std::cout << "\nSECOND ATTEMPT : " << std::endl;
+		formSign(formList[i + 2], bureList[i + 2]);
+		std::cout << "FIRST ATTEMPT EXECUTE: " << std::endl;
+		formExec(formList[i + 2], bureList[i + 2]);
+		std::cout << "SECOND ATTEMPT EXECUTE: " << std::endl;
+		formExec(formList[i + 2], bureList[i + 2]);
+		delete formList[i + 2];
+		delete bureList[i + 2];
 	}
 	return 0;
 }
-
-/*int main() {
-	std::cout << std::endl;
-	jimmy.signForm(form_3);
-
-	std::cout << std::endl;
-	paco.signForm(form_3);
-
-	std::cout << std::endl;
-	paco.signForm(form_3);
-	return 0;
-}*/

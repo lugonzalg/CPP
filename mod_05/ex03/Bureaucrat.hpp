@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 16:17:19 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 13:00:38 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 19:08:44 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class Bureaucrat
 {
 	private:
-		std::string _name;
-		int			_level;
+		std::string const	_name;
+		int					_level;
 
 	public:
 
@@ -29,11 +29,12 @@ class Bureaucrat
 		Bureaucrat(int, std::string const&);
 		~Bureaucrat();
 
-		Bureaucrat&	operator= (Bureaucrat const&);
+		Bureaucrat& operator= (Bureaucrat const&);
 
 		void	addLevel();
 		void	decrLevel();
 		void	signForm(Form&);
+
 		void	executeForm(Form const&);
 
 		std::string const&	getName() const;

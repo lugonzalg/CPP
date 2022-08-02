@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:50 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/08/01 21:08:05 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:34:18 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*CONSTRUCTORS*/
 /**************/
 
-Form::Form() : _name("no name"), _state(false), _gradeSign(-1), _gradeExec(-1) {
+Form::Form() : _name("no name"), _state(false), _gradeSign(1), _gradeExec(1) {
 	//std::cout << "Form Default constructor, Danger!" << std::endl;
 }
 
@@ -77,45 +77,27 @@ const char* Form::FormTrueStatus::what() const throw() {
 /******************/
 
 void	Form::beSigned(Bureaucrat const& signer) {
-	try
-	{
-		if (signer.getLevel() > this->_gradeSign) {
-			std::cout << FAIL << "Signer Level: " << signer.getLevel() << " || Form Sign Level: " << this->_gradeSign << ": ";
-			throw Form::GradeTooLowException();
-		}
-		else if (this->_state) {
-			std::cout << FAIL << "Form Status Error: " << this->_name;
-			throw Form::FormTrueStatus();
+	if (signer.getLevel() > this->_gradeSign) {
+		std::cout << FAIL << "Signer Level: " << signer.getLevel() << " || Form Sign Level: " << this->_gradeSign << ": ";
+		throw Form::GradeTooHighException();
+	}
+	else if (this->_state) {
+		std::cout << FAIL << "Form Status Error: " << this->_name;
+		throw Form::FormTrueStatus();
 
-		}
-		this->_state = true;
-		std::cout << OK << signer.getName() << " signed " << this->_name << " form." << std::endl << END;
 	}
-	catch (Form::GradeTooLowException const& e) {
-		std::cout << e << END;
-	}
-	catch (Form::FormTrueStatus const& e) {
-		std::cout << e << END;
-	}
+	this->_state = true;
+	std::cout << OK << signer.getName() << " signed " << this->_name << " form." << std::endl << END;
 }
 
 void	Form::execute(Bureaucrat const& bure) {
-	try
-	{
-		if (!this->_state)
-			throw Form::FormFalseStatus();
-		else if (this->getGradeExec() < bure.getLevel())
-			throw Form::GradeTooLowException();
-		this->action();
+	if (!this->_state)
+		throw Form::FormFalseStatus();
+	else if (this->getGradeExec() < bure.getLevel()) {
+		std::cout << FAIL << "Signer Level: " << bure.getLevel() << " || Form Execution Level: " << this->_gradeExec << ": ";
+		throw Form::GradeTooHighException();
 	}
-	catch (Form::GradeTooLowException& e)
-	{
-		std::cout << e;
-	}
-	catch (Form::FormFalseStatus& e)
-	{
-		std::cout << e;
-	}
+	this->action();
 }
 
 void	Form::action() const { std::cout << "Form: " + this->_name + " doesn't have any utility" << std::endl; }

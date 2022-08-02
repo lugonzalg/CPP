@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:50 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 21:30:53 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:39:17 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 /*CONSTRUCTORS*/
 /**************/
 
-Form::Form() : _name("no name"), _state(false), _gradeSign(-1), _gradeExec(-1) {
+Form::Form() : _name("no name"), _state(false), _gradeSign(1), _gradeExec(1) {
 	//std::cout << "Form Default constructor, Danger!" << std::endl;
 }
 
@@ -34,31 +34,14 @@ Form::Form(Form const& src) : _gradeSign(src.getGradeSign()), _gradeExec(src.get
 }
 
 Form::Form(std::string const& name, int sign, int exec) : _name(name), _state(false), _gradeSign(sign), _gradeExec(exec) {
-	try {
-		if (sign < HIGHLEVEL) {
-			std::cout << FAIL << "Sign Level Error: Out of range ";
-			throw Form::GradeTooHighException();
-		}
-		else if (exec < HIGHLEVEL) {
-			std::cout << FAIL << "Excec Level Error: Out of range ";
-			throw Form::GradeTooHighException();
-		}
-		else if (sign > LOWLEVEL) {
-			std::cout << FAIL << "Sign Level Error: Out of range ";
-			throw Form::GradeTooLowException();
-		}
-		else if (exec > LOWLEVEL) {
-			std::cout << FAIL << "Excec Level Error: Out of range ";
-			throw Form::GradeTooLowException();
-		}
-		std::cout << OK << "Form succesfully instated" << END << std::endl;
-	}
-	catch (Form::GradeTooHighException& e) {
-		std::cout << "Form Constructor: " << e << END;
-	}
-	catch (Form::GradeTooLowException& e) {
-		std::cout << "Form Constructor: " << e << END;
-	}
+	if (sign < HIGHLEVEL)
+		throw Form::GradeTooHighException();
+	else if (exec < HIGHLEVEL)
+		throw Form::GradeTooHighException();
+	else if (sign > LOWLEVEL)
+		throw Form::GradeTooLowException();
+	else if (exec > LOWLEVEL)
+		throw Form::GradeTooLowException();
 }
 
 /**************/
@@ -94,52 +77,30 @@ const char* Form::FormTrueStatus::what() const throw() {
 /******************/
 
 void	Form::beSigned(Bureaucrat const& signer) {
-	try
-	{
-		if (signer.getLevel() > this->_gradeSign) {
-			std::cout << FAIL << "Signer level Error, " << signer.getLevel() << ": ";
-			throw Form::GradeTooLowException();
-		}
-		else if (this->_state) {
-			std::cout << FAIL << "Form Status Error: " << this->_name;
-			throw Form::FormTrueStatus();
+	if (signer.getLevel() > this->_gradeSign) {
+		std::cout << FAIL << "Signer Level: " << signer.getLevel() << " || Form Sign Level: " << this->_gradeSign << ": ";
+		throw Form::GradeTooHighException();
+	}
+	else if (this->_state) {
+		std::cout << FAIL << "Form Status Error: " << this->_name;
+		throw Form::FormTrueStatus();
 
-		}
-		this->_state = true;
-		std::cout << OK << signer.getName() << " signed " << this->_name << " form." << std::endl << END;
 	}
-	catch (Form::GradeTooLowException const& e) {
-		std::cout << e << END;
-	}
-	catch (Form::FormTrueStatus const& e) {
-		std::cout << e << END;
-	}
+	this->_state = true;
+	std::cout << OK << signer.getName() << " signed " << this->_name << " form." << std::endl << END;
 }
 
 void	Form::execute(Bureaucrat const& bure) {
-	try
-	{
-		if (!this->_state) {
-			std::cout << FAIL << "Form State Error: ";
-			throw Form::FormFalseStatus();
-		}
-		else if (this->getGradeExec() < bure.getLevel()) {
-			std::cout << FAIL << "Signer Level Error: ";
-			throw Form::GradeTooLowException();
-		}
-		this->action();
+	if (!this->_state)
+		throw Form::FormFalseStatus();
+	else if (this->getGradeExec() < bure.getLevel()) {
+		std::cout << FAIL << "Signer Level: " << bure.getLevel() << " || Form Execution Level: " << this->_gradeExec << ": ";
+		throw Form::GradeTooHighException();
 	}
-	catch (Form::GradeTooLowException& e)
-	{
-		std::cout << e << END;
-	}
-	catch (Form::FormFalseStatus& e)
-	{
-		std::cout << e << END;
-	}
+	this->action();
 }
 
-void	Form::action() const { std::cout << OK << "Form succesfully executed: " + this->_name + " doesn't have any utility" << END << std::endl; }
+void	Form::action() const { std::cout << "Form: " + this->_name + " doesn't have any utility" << std::endl; }
 
 /**********/
 /*OPERATOR*/
@@ -179,21 +140,21 @@ std::ostream&	operator<< (std::ostream& os, Form const& src) {
 }
 
 std::ostream&	operator<< (std::ostream& os, Form::GradeTooHighException const& e) {
-	os << e.what() << std::endl;
+	os << FAIL << e.what() << std::endl << END;
 	return os;
 }
 
 std::ostream&	operator<< (std::ostream& os, Form::GradeTooLowException const& e) {
-	os << e.what() << std::endl;
+	os << FAIL << e.what() << std::endl << END;
 	return os;
 }
 
 std::ostream&	operator<< (std::ostream& os, Form::FormFalseStatus const& e) {
-	os << e.what() << std::endl;
+	os << FAIL << e.what() << std::endl << END;
 	return os;
 }
 
 std::ostream&	operator<< (std::ostream& os, Form::FormTrueStatus const& e) {
-	os << e.what() << std::endl;
+	os << FAIL << e.what() << std::endl << END;
 	return os;
 }

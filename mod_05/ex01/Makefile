@@ -3,7 +3,7 @@ NAME	= Form
 RM		= rm -rf
 C++		= clang++
 CFLAGS	= -Wall -Werror -Wextra -g3
-SNTZ	= -fsanitize=address
+#SNTZ	= -fsanitize=address
 INC		= -I .
 
 FILES	= main \

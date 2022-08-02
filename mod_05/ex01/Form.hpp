@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:03:45 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/07/31 19:19:28 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/02 18:34:22 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Form
 		Form();
 		Form(Form const&);
 		Form(std::string const&, int, int);
-		~Form();
+		virtual ~Form();
 
 		Form&	operator= (Form const&);
 

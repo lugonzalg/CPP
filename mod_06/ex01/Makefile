@@ -1,4 +1,4 @@
-NAME	= Cast01
+NAME	= Serialize
 
 RM		= rm -rf
 C++		= clang++ -std=c++98

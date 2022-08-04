@@ -6,7 +6,7 @@
 /*   By: lugonzal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 18:32:54 by lugonzal          #+#    #+#             */
-/*   Updated: 2022/08/02 18:41:27 by lugonzal         ###   ########.fr       */
+/*   Updated: 2022/08/04 16:48:17 by lugonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ class ShrubberyCreationForm : virtual public Form
 
 		ShrubberyCreationForm&	operator= (ShrubberyCreationForm const&);
 
-		void	action() const;
+		virtual void	action() const;
 		void	_initTree();
 };

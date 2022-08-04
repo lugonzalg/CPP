@@ -19,6 +19,9 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+run: all
+	./$(NAME)
+
 clean:
 	$(RM) $(OBJ)
 

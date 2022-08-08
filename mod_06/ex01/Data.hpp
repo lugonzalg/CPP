@@ -1,10 +1,14 @@
 #ifndef DATA_HPP
 #define DATA_HPP
 
+#include <string>
+
 class Data
 {
 	private:
-		std::string const&	_name;
+		std::string	_name;
+		int			_age;
+		float		_accuracy;
 
 	public:
 		Data();
@@ -12,10 +16,10 @@ class Data
 		~Data();
 		
 		Data&	operator= (Data const&);
-		int age;
-		
 
-
+		std::string const& getName() const;
+		int	getAge() const;
+		float	getAccuracy() const;
 };
 
 #endif

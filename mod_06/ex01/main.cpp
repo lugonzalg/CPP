@@ -1,12 +1,15 @@
 #include <stdlib.h>
+#include <stdint.h>
+#include <fstream>
 
 #include "Data.hpp"
 
 uintptr_t	serialize(Data *ptr) {
-	uintptr_t	n;
-	(void)ptr;
+	std::ofstream oSerial;
 
-	return n;
+	oSerial.write(ptr, std::ios::binary);
+
+	return oSerial;
 }
 
 Data	*deserialize(uintptr_t raw) {

@@ -1,8 +1,11 @@
 #include <iostream>
+#include <string.h>
 
 #include "whatever.hpp"
 
+
 int main() {
+	/*
 	int a = 1,b = 2;
 	float c = 1.2f,d = 2.1f;
 	std::string str, rts;
@@ -30,5 +33,19 @@ int main() {
 	std::cout << max<int>(a, 1) << std::endl;
 	std::cout << max<float>(c, d) << std::endl;
 	std::cout << max<float>(c, 1.2f) << std::endl;
+	*/
+	int a = 2;
+	int b = 3;
+	::swap( &a, &b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	::swap(&c, &d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 	return 0;
 }

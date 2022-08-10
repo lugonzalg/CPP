@@ -31,35 +31,25 @@ static Base	*generate() {
 static void	identify(Base *ptr) {
 	Base	*doSome;
 
-	try
-	{
-		doSome = &dynamic_cast<A&>(*ptr);
+	std::cout << "WITH POINTER" << std::endl;
+	doSome = dynamic_cast<A*>(ptr);
+	if (doSome) {
 		std::cout << "A" << std::endl;
 	}
-	catch(std::bad_cast const&) {
-		std::cout << "Not A" << std::endl;
-	}
-	try
-	{
-		doSome = &dynamic_cast<B&>(*ptr);
+	doSome = dynamic_cast<B*>(ptr);
+	if (doSome) {
 		std::cout << "B" << std::endl;
 	}
-	catch(std::bad_cast const&) {
-		std::cout << "Not B" << std::endl;
-	}
-	try
-	{
-		doSome = &dynamic_cast<C&>(*ptr);
+	doSome = dynamic_cast<C*>(ptr);
+	if (doSome) {
 		std::cout << "C" << std::endl;
-	}
-	catch(std::bad_cast const&) {
-		std::cout << "Not C" << std::endl;
 	}
 }
 
 void identify(Base& ptr) {
 	Base	*doSome;
 
+	std::cout << "WITH DEREFENCE" << std::endl;
 	try
 	{
 		doSome = &dynamic_cast<A&>(ptr);

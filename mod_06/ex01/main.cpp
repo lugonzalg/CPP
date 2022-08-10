@@ -1,29 +1,34 @@
 #include <stdlib.h>
-#include <fstream>
+#include <stdint.h>
+
+#include <cstring>
+#include <iostream>
 
 #include "Data.hpp"
 
-static uintptr_t	serialize(Data *ptr) {
-	uintptr_t	retval;
-	std::fstream	file;
-
-	retval = 0;
-	file.open("porros.bin", std::ios::binary);
-	if (!file.is_open())
-		return (uintptr_t)NULL;
-	file.write(reinterpret_cast<char *>(ptr), sizeof(Data));
-	return retval;
-}
+static uintptr_t	serialize(Data *ptr) { return reinterpret_cast<uintptr_t>(ptr); }
 
 static Data	*deserialize(uintptr_t raw) {
-	(void)raw;
-	return new Data;
+	Data *holder;
+
+	holder = reinterpret_cast<Data *>(raw);
+	std::cout << "NAME: " << holder->name << std::endl;
+	std::cout << "AGE: " << holder->age << std::endl;
+	std::cout << "ACCURACY: " << holder->accuracy << std::endl;
+	return holder;
 }
 
 int main() {
-	Data test("Lukas", 42, 42.42f);
 	uintptr_t	serialized;
+	Data *holder;
 
-	serialized = serialize(&test);
+	holder = new Data;
+	std::memset(holder->name, 42, 24);
+	holder->age = 42;
+	holder->accuracy = 42.42f;
+
+	serialized = serialize(holder);
+	holder = deserialize(serialized);
+	delete holder;
 	return 0;
 }

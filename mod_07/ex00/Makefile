@@ -1,11 +1,11 @@
-NAME	= Serialize
+NAME	= Lukas
 
-RM		= rm -rf
-C++		= clang++ -std=c++98
+C++		= clang++
+CFLAGS	= -Wall -Werror -Wextra -std=c++98 -g3
 SNTZ	= -fsanitize=address
-CFLAGS	= -Wall -Werror -Wextra -Wconversion -Wno-unused -g3
+RM		= rm -rf
 
-FILES	= main
+FILES	= main \
 
 SRC		= $(addsuffix .cpp, $(FILES))
 OBJ		= $(addsuffix .o, $(FILES))
@@ -18,6 +18,9 @@ $(NAME): $(OBJ)
 
 all: $(NAME)
 
+run: all
+	./$(NAME)
+
 clean:
 	$(RM) $(OBJ)
 
@@ -26,4 +29,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclea re run
+.PHONY: all clean fclean re run

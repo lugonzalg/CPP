@@ -3,24 +3,12 @@
 
 #include <string>
 
-class Data
+typedef struct s_data
 {
-	private:
-		std::string 		_name;
-		int					_age;
-		float				_accuracy;
+	char	name[24];
+	int		age;
+	float	accuracy;
 
-	public:
-		Data();
-		Data(std::string const&, int, float);
-		Data(Data const&);
-		~Data();
-		
-		Data&	operator= (Data const&);
-
-		std::string getName() const;
-		int	getAge() const;
-		const float*	getAccuracy() const;
-};
+}	Data;
 
 #endif

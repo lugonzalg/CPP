@@ -14,3 +14,5 @@ RUN apt-get update && apt-get install -y \
 RUN  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
 
 CMD ["zsh"]
+
+WORKDIR /tmp

@@ -3,24 +3,31 @@
 
 #include <list>
 
-class Span : virtual public std::list<int>
+class Span
 {
 	private:
+		int			*_container;
 		unsigned	_maxLen;
 		unsigned	_currLen;
 		int			_min;
 		int			_secondMin;
 		int			_max;
 
+		void		_handleSpan(int);
+
 	public:
-		Span(unsigned n)};
+		Span(unsigned n);
 		Span(Span const&);
-		~Span() {};
+		~Span();
 
 		//Span&	operator= (Span const&);
-		
 
-		void	addNumber(unsigned);
+		void	addNumber(int);
+
+	class FullContainer : virtual public std::exception
+	{
+		virtual const char	*what() const throw();
+	};
 
 
 };

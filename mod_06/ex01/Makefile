@@ -1,7 +1,7 @@
 NAME	= Serialize
 
 RM		= rm -rf
-C++		= clang++ -std=c++98
+C++		= clang++ -std=c++98 -pedantic
 SNTZ	= -fsanitize=address
 CFLAGS	= -Wall -Werror -Wextra -Wconversion -Wno-unused -g3
 

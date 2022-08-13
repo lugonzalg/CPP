@@ -23,8 +23,9 @@ int main() {
 	Data *holder;
 
 	holder = new Data;
-	std::memset(holder->name, 42, 24);
-	holder->age = 42;
+	std::memset(holder, 0, sizeof(Data));
+	std::memset(holder->name, 65, 24);
+	holder->age = 65;
 	holder->accuracy = 42.42f;
 
 	serialized = serialize(holder);

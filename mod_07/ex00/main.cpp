@@ -3,49 +3,39 @@
 
 #include "whatever.hpp"
 
+int main(void) {
+	int	aa = 2;
+	int bb = 3;
 
-int main() {
-	/*
-	int a = 1,b = 2;
-	float c = 1.2f,d = 2.1f;
-	std::string str, rts;
-
-	str = "qwer";
-	rts = "rewq";
-	std::cout << a << "--" << b << std::endl;
-	swap<int>(&a, &b);
-	std::cout << a << "--" << b << std::endl;
-
-	std::cout << c << "--" << d << std::endl;
-	swap<float>(&c, &d);
-	std::cout << c << "--" << d << std::endl;
-
-	std::cout << str << "--" << rts << std::endl;
-	swap<std::string>(&str, &rts);
-	std::cout << str << "--" << rts << std::endl;
-
-	std::cout << min<int>(a, b) << std::endl;
-	std::cout << min<int>(a, 1) << std::endl;
-	std::cout << min<float>(c, d) << std::endl;
-	std::cout << min<float>(c, 1.2f) << std::endl;
-
-	std::cout << max<int>(a, b) << std::endl;
-	std::cout << max<int>(a, 1) << std::endl;
-	std::cout << max<float>(c, d) << std::endl;
-	std::cout << max<float>(c, 1.2f) << std::endl;
-	*/
-	int a = 2;
-	int b = 3;
-	::swap( &a, &b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-
+	swap( aa, bb );
+	std::cout << "aa = " << aa << ", bb = " << bb << std::endl;
+	std::cout << "min( aa, bb ) = " << ::min( aa, bb ) << std::endl;
+	std::cout << "max( aa, bb ) = " << ::max( aa, bb ) << std::endl;
 	std::string c = "chaine1";
 	std::string d = "chaine2";
-	::swap(&c, &d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-	return 0;
-}
+
+	int	cc = 2;
+	int dd = 3;
+
+	swap( cc, dd );
+	std::cout << "cc = " << cc << ", dd = " << dd << std::endl;
+	std::cout << "min( cc, dd ) = " << ::min( cc, dd ) << std::endl;
+	std::cout << "max( cc, dd ) = " << ::max( cc, dd ) << std::endl;
+
+	float	ee = 2.1f;
+	float 	ff = 3.1f;
+
+	swap( ee, ff );
+	std::cout << "ee = " << ee << ", ff = " << ff << std::endl;
+	std::cout << "min( ee, ff ) = " << ::min( ee, ff ) << std::endl;
+	std::cout << "max( ee, ff ) = " << ::max( ee, ff ) << std::endl;
+
+
+	std::string str = "chaine1";
+	std::string rts = "chaine2";
+
+	swap(str, rts);
+	std::cout << "str = " << str << ", rts = " << rts << std::endl;
+	std::cout << "min( str, rts ) = " << ::min( str, rts ) << std::endl;
+	std::cout << "max( str, rts ) = " << ::max( str, rts ) << std::endl;
+return 0; }

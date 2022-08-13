@@ -1,7 +1,7 @@
 NAME	= Span
 
 C++		= c++ -std=c++98
-SNTZ	= -fsanitize=addres
+SNTZ	= -fsanitize=address
 CFLAGS	= -Wall -Werror -Wextra -g3 
 RM		= rm -rf
 

@@ -23,13 +23,14 @@ class Span
 		//Span&	operator= (Span const&);
 
 		void	addNumber(int);
+		int		shortestSpan();
+		int		longestSpan();
 
 	class FullContainer : virtual public std::exception
 	{
-		virtual const char	*what() const throw();
+		public:
+			virtual const char	*what() const throw();
 	};
-
-
 };
 
 #endif

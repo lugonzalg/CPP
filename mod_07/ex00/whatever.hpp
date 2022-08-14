@@ -3,6 +3,15 @@
 
 #include <iostream>
 
+//SWAP SIN VARIABLE AUXILIAR
+/*
+template<class T>
+void	swap(T& a, T& b) {
+	b += a;
+	a = b - a;
+	b -= a;
+}*/
+
 template<class T>
 void	swap(T& a, T& b) {
 	T	c;
@@ -13,29 +22,15 @@ void	swap(T& a, T& b) {
 }
 
 template<class T>
-T	min(T a, T b) {
+T&	min(T& a, T& b) {
 	if (a < b)
 		return a;
 	return b;
 }
 
-template <>
-std::string min<std::string>(std::string a, std::string b) {
-	if (strcmp(b.c_str(), a.c_str()) != -1)
-		return a;
-	return b;
-}
-
 template<class T>
-T	max(T a, T b) {
+T&	max(T& a, T& b) {
 	if (b < a)
-		return a;
-	return b;
-}
-
-template <>
-std::string max<std::string>(std::string a, std::string b) {
-	if (strcmp(a.c_str(), b.c_str()) != -1)
 		return a;
 	return b;
 }

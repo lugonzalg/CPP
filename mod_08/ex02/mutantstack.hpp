@@ -14,13 +14,18 @@ class MutantStack : virtual public std::stack<T>
 	public:
 		class iterator //: virtual public std::iterator<std::input_iterator_tag, T>
 		{
-			void	operator++ (T) {};
-			void	operator-- (T) {};
+			public:
+				void	operator++ ();
+				void	operator-- ();
+
+				bool	operator== (iterator const&);
+				bool	operator!= (iterator const&);
+
+				T&	operator* () { return this->Data; };
 		};
 
-		MutantStack<T>::iterator&	begin();
-		MutantStack<T>::iterator&	end();
-
+		iterator&	begin();
+		iterator&	end();
 };
 
 #endif

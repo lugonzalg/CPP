@@ -13,26 +13,38 @@ class MutantStack : public std::stack<T>
 	protected:
 
 	public:
-		class iterator
-		{
-			public:
-				void	operator++ ();
-				void	operator-- ();
+		typedef typename MutantStack<T>::container_type::iterator iterator;
+		typedef typename MutantStack<T>::container_type::const_iterator const_iterator;
+		typedef typename MutantStack<T>::container_type::reverse_iterator reverse_iterator;
+		typedef typename MutantStack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-				bool	operator== (iterator const&);
-				bool	operator!= (iterator const&);
-
-		};
-
-		MutantStack<T>::c	begin() {
-			return std::begin(c);
+		iterator	begin() {
+			return this->c.begin();
+		}
+		iterator	end() {
+			return this->c.end();
 		}
 
-		MutantStack<T>::c	begin() {
-			return std::begin(c);
+		const_iterator	cbegin() const {
+			return this->c.cbegin();
 		}
-		//iterator&	begin();
-		//iterator&	end();
+		const_iterator	cend() const {
+			return this->c.cend();
+		}
+
+		reverse_iterator	rbegin() {
+			return this->c.rbegin();
+		}
+		reverse_iterator	rend() {
+			return this->c.rend();
+		}
+
+		reverse_iterator	crbegin() {
+			return this->c.rbegin();
+		}
+		reverse_iterator	crend() {
+			return this->c.crend();
+		}
 };
 
 #endif

@@ -1,5 +1,4 @@
 #include "mutantstack.hpp"
-
 MutantStack<T>::iterator&	MutantStack::start() {
 	return (MutantStack::c)[0];
 }

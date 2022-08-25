@@ -4,15 +4,16 @@
 #include <stack>
 #include <iterator>
 
-template<class T>
-class MutantStack : virtual public std::stack<T>
+template <class T>
+class MutantStack : public std::stack<T>
 {
+    using typename std::stack<T>::c;
 	private:
 
 	protected:
 
 	public:
-		class iterator //: virtual public std::iterator<std::input_iterator_tag, T>
+		class iterator
 		{
 			public:
 				void	operator++ ();
@@ -21,11 +22,17 @@ class MutantStack : virtual public std::stack<T>
 				bool	operator== (iterator const&);
 				bool	operator!= (iterator const&);
 
-				T&	operator* () { return this->Data; };
 		};
 
-		iterator&	begin();
-		iterator&	end();
+		MutantStack<T>::c	begin() {
+			return std::begin(c);
+		}
+
+		MutantStack<T>::c	begin() {
+			return std::begin(c);
+		}
+		//iterator&	begin();
+		//iterator&	end();
 };
 
 #endif

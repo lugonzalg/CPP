@@ -16,7 +16,7 @@ void	trans(float &pos) {
 }
 
 template <class T>
-void	iter(T * src, int sz, void(*ft)(T &)) {
+void	iter(T* src, int sz, void(*ft)(T &)) {
 	for (int i = 0; i < sz; i++)
 		ft(src[i]);
 }

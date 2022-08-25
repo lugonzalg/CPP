@@ -11,7 +11,7 @@
 /*CONSTRUCTOR*/
 /*************/
 
-Span::Span(unsigned n) : _container(new int[n]), _maxLen(n), _currLen(0), _min(INT_MAX), _secondMin(INT_MAX), _max(INT_MIN) {}
+Span::Span(unsigned n) : _v(new std::vector<int>(n)), _maxLen(n), _currLen(0) {}
 
 /************/
 /*DESTRUCTOR*/
@@ -33,18 +33,6 @@ void	Span::addNumber(int n) {
 
 const char	*Span::FullContainer::what() const throw() {
 	return "Conainter cannot fit more values";
-}
-
-void	Span::_handleSpan(int n) {
-	if (n < this->_min) {
-		this->_secondMin = this->_min;
-		this->_min = n;
-	}
-	else if (n > this->_max)
-		this->_max = n;
-	if (n > this->_min and n < this->_secondMin)
-		this->_secondMin = n;
-
 }
 
 int	Span::shortestSpan() { return this->_secondMin - this->_min; }

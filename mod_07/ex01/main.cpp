@@ -4,8 +4,8 @@
 
 int main() {
 	std::cout << "MY TEST" << std::endl;
-	int	iArr[10];
-	float	fArr[10];
+	int			iArr[10];
+	float		fArr[10];
 	std::string	strArr[10];
 
 	int	sz = 10;

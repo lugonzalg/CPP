@@ -6,6 +6,7 @@
 class Span
 {
 	private:
+		std::vector<int>	v;
 		int			*_container;
 		unsigned	_maxLen;
 		unsigned	_currLen;

@@ -15,7 +15,7 @@ class	NotFound : virtual public std::exception
 {
 	public:
 		virtual const char *what() const throw() {
-				return "Key value not found\n";
+			return "Key value not found\n";
 		}
 };
 
@@ -28,24 +28,12 @@ class FillError : virtual public std::exception
 };
 
 template<typename C>
-int	easyfind(C &container, int key) {
-	for (typename C::iterator i = container.begin(); i != container.end(); i++) {
-		if (*i == key)
-			return *i;
-	}
-	throw NotFound();
-}
+void	easyfind(C &container, int key) {
+	typename C::iterator	handle;
 
-template<typename C>
-int	easyfind(std::stack<C> &container, int key) {
-	size_t	sz;
-
-	sz = container.size();
-	for (size_t i = 0; i < sz; i++) {
-		if (container.top() == key)
-			return container.top();
-	}
-	throw NotFound();
+	handle = std::find(container.begin(), container.end(), key);
+	if (handle == container.end())
+		throw NotFound();
 }
 
 template<typename C>
@@ -90,12 +78,10 @@ static void	callFill(C& container) {
 
 template <typename C>
 static void	callFind(C& container, int n) {
-	int holder;
-
 	try
 	{
-		holder = ::easyfind(container, n);
-		std::cout << OK << "VALOR ENCONTRADO " << holder << std::endl << END;
+		::easyfind(container, n);
+		std::cout << OK << "VALOR ENCONTRADO " << std::endl << END;
 	}
 	catch (std::exception const& e)
 	{

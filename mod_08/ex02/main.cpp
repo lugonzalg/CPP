@@ -17,7 +17,9 @@ int main()
 
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
-	++it;
+	(void)it;
+	(void)ite;
+/*	++it;
 	--it;
 	while (it != ite)
 	{
@@ -25,5 +27,6 @@ int main()
 		++it;
 	}
 	std::stack<int> s(mstack);
+	*/
 return 0;
 }

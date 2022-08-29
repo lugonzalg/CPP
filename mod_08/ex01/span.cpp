@@ -1,6 +1,9 @@
 #include "span.hpp"
 
 #include <ostream>
+#include <algorithm>
+#include <utility>
+#include <iostream>
 #include <climits>
 
 #define OK		 	"\033[92m"
@@ -11,13 +14,13 @@
 /*CONSTRUCTOR*/
 /*************/
 
-Span::Span(unsigned n) : _container(new int[n]), _maxLen(n), _currLen(0), _min(INT_MAX), _secondMin(INT_MAX), _max(INT_MIN) {}
+Span::Span(unsigned n) :  _maxLen(n), _currLen(0) {}
 
 /************/
 /*DESTRUCTOR*/
 /************/
 
-Span::~Span() { delete [] this->_container; }
+Span::~Span() {}
 
 /******************/
 /*MEMBER FUNCTIONS*/
@@ -26,30 +29,24 @@ Span::~Span() { delete [] this->_container; }
 void	Span::addNumber(int n) {
 	if (this->_maxLen == this->_currLen)
 		throw Span::FullContainer();
-	this->_container[this->_currLen] = n;
+	this->_v.push_back(n);
 	this->_currLen++;
-	this->_handleSpan(n);
 }
 
 const char	*Span::FullContainer::what() const throw() {
-	return "Conainter cannot fit more values";
+	return "Container cannot fit more values\n";
 }
 
-void	Span::_handleSpan(int n) {
-	if (n < this->_min) {
-		this->_secondMin = this->_min;
-		this->_min = n;
+int	Span::longestSpan() { 
+	std::sort(this->_v.begin(), this->_v.end());
+	return this->_v[this->_currLen - 1] - this->_v[0];
 	}
-	else if (n > this->_max)
-		this->_max = n;
-	if (n > this->_min and n < this->_secondMin)
-		this->_secondMin = n;
 
-}
+int	Span::shortestSpan() {
+	std::sort(this->_v.begin(), this->_v.end());
+	return this->_v[1] - this->_v[0];
+	}
 
-int	Span::shortestSpan() { return this->_secondMin - this->_min; }
-
-int	Span::longestSpan() { return this->_max - this->_min; }
 /*********/
 /*OSTREAM*/
 /*********/

@@ -1,18 +1,14 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
-#include <list>
+#include <vector>
 
 class Span
 {
 	private:
-		std::vector<int>	v;
-		int			*_container;
+		std::vector<int>	_v;
 		unsigned	_maxLen;
 		unsigned	_currLen;
-		int			_min;
-		int			_secondMin;
-		int			_max;
 
 		void		_handleSpan(int);
 
@@ -21,13 +17,28 @@ class Span
 		Span(Span const&);
 		~Span();
 
-		//Span&	operator= (Span const&);
+		Span&	operator= (Span const&);
 
 		void	addNumber(int);
+		template <typename C>
+		void	addNumberSort(C& c) {
+			for (typename C::iterator it = c.begin(); it != c.end(); it++) {
+				if (this->_currLen == this->_maxLen)
+					throw Span::FullContainer();
+				this->_v.push_back(*it);
+				this->_currLen++;
+			}
+
+		}
 		int		shortestSpan();
 		int		longestSpan();
 
 	class FullContainer : virtual public std::exception
+	{
+		public:
+			virtual const char	*what() const throw();
+	};
+	class LowElementCount : virtual public std::exception
 	{
 		public:
 			virtual const char	*what() const throw();

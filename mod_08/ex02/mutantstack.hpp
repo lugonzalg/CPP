@@ -7,7 +7,7 @@
 template <class T>
 class MutantStack : public std::stack<T>
 {
-    using typename std::stack<T>::c;
+    //using typename std::stack<T>::c;
 	private:
 
 	protected:
@@ -39,10 +39,10 @@ class MutantStack : public std::stack<T>
 			return this->c.rend();
 		}
 
-		reverse_iterator	crbegin() {
+		const_reverse_iterator	crbegin() {
 			return this->c.rbegin();
 		}
-		reverse_iterator	crend() {
+		const_reverse_iterator	crend() {
 			return this->c.crend();
 		}
 };
